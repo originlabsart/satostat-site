@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Satostat</title>
+<meta name="description" content="Satostat, proof of heat. QuantumRad is a SHA-256 Bitcoin mining radiator with three smart heat modes and an iOS app that turns the warmth in your room into earnings.">
+<link rel="icon" href="logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://satostat.com/">
+<meta name="theme-color" content="#141415">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Satostat">
+<meta property="og:title" content="Satostat · Heat your room. Mine Bitcoin.">
+<meta property="og:description" content="QuantumRad is a wall-mounted radiator whose heating element is an array of Bitcoin mining ASICs. Every watt that warms the room also earns.">
+<meta property="og:url" content="https://satostat.com/">
+<meta property="og:image" content="https://satostat.com/share-satostat-v1.jpg">
+<meta property="og:image:secure_url" content="https://satostat.com/share-satostat-v1.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="945">
+<meta property="og:image:alt" content="Satostat website hero: a 3D QuantumRad mining radiator with live heat output and earnings">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Satostat · Heat your room. Mine Bitcoin.">
+<meta name="twitter:description" content="QuantumRad is a wall-mounted radiator whose heating element is an array of Bitcoin mining ASICs. Every watt that warms the room also earns.">
+<meta name="twitter:image" content="https://satostat.com/share-satostat-v1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fonts load without blocking the first paint; with display=swap the text shows at once and swaps in the faces when they arrive. -->
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+<style>
+/* Satostat (proof of heat): single-theme dark page. Gold on carbon, engineering-drawing language.
+   Layout: full-bleed sections on a 12-col grid, parallax decor layers behind content. */
+/* Arial scaled to Chakra Petch's width and line metrics. It stands in while the web font loads, so the
+   headings wrap the same before and after the swap and the hero does not jump (layout shift). */
+@font-face{font-family:"Chakra Petch Fallback";font-weight:400 700;src:local("Arial Bold"),local("Arial-BoldMT");size-adjust:93.5%;ascent-override:105.9%;descent-override:33.2%;line-gap-override:0%}
+:root{
+  --bg:#141415;
+  --bg-2:#1b1b1d;
+  --panel:#202023;
+  --panel-2:#26262a;
+  --line:#2f2f34;
+  --line-2:#3c3c42;
+  --ink:#f1ede3;
+  --ink-2:#b9b5aa;
+  --muted:#7f7c74;
+  --gold:#c9a84c;
+  --gold-2:#e8cc6c;
+  --gold-dim:rgba(201,168,76,.18);
+  --heat:#e2663a;
+  --good:#6fbf73;
+  --warn:#e0b341;
+  --crit:#e05a4e;
+  --display:"Chakra Petch","Chakra Petch Fallback","Rajdhani","Arial Narrow",sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;
+  --r:6px;
+  --max:1180px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+body{overflow-x:hidden}
+img,svg{max-width:100%}
+a{color:var(--gold-2);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:.01em}
+h1{font-size:clamp(2.4rem,6vw,4.6rem);text-transform:uppercase;font-style:italic}
+h2{font-size:clamp(1.8rem,3.6vw,2.7rem);text-transform:uppercase}
+h3{font-size:1.2rem;text-transform:uppercase;letter-spacing:.04em}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px}
+.lede{color:var(--ink-2);font-size:1.08rem;max-width:37.2em}/* = 62ch of IBM Plex Sans, in em so the fallback font does not change it */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.9rem;padding:13px 20px;border-radius:var(--r);border:1px solid var(--gold);color:var(--bg);background:linear-gradient(180deg,var(--gold-2),var(--gold));cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,168,76,.25);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--gold-2);border-color:var(--line-2)}
+.btn.ghost:hover{border-color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink-2)}
+.tag i{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+section{position:relative;padding:96px 0}
+section.tight{padding:64px 0}
+.sec-head{display:grid;gap:14px;max-width:760px;margin-bottom:48px}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.card h3{margin-bottom:10px}
+.card p{color:var(--ink-2);font-size:.95rem}
+hr.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+/* parallax decor */
+.px{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.px > *{position:absolute;will-change:transform}
+.gridlines{inset:-20% 0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.35;mask-image:radial-gradient(ellipse at 50% 40%,#000 20%,transparent 75%)}
+/* Fixed px, not %, so the hero growing when web fonts swap in does not move the grid (layout shift). */
+.hero .gridlines{inset:-160px 0}
+.glow{width:70vw;height:70vw;max-width:900px;max-height:900px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.22),rgba(201,168,76,0) 62%);filter:blur(10px)}
+.wave{left:-10%;right:-10%;height:240px;opacity:.5}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(20,20,21,.78);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;white-space:nowrap;font-family:var(--display);font-weight:700;font-style:italic;letter-spacing:.06em;text-transform:uppercase;font-size:1.15rem;color:var(--gold-2)}
+.brand:hover{text-decoration:none}
+.nav nav{display:flex;gap:18px;white-space:nowrap}
+.nav nav a{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.nav nav a:hover{color:var(--gold-2);text-decoration:none}
+@media (max-width:900px){.nav nav{display:none}}
+
+/* hero */
+.hero{padding:88px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1 em{font-style:italic;color:var(--gold-2)}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px}
+.telemetry{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line-2);border-radius:10px;padding:18px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+/* hero product shot with telemetry floating over it */
+.hero .wrap{grid-template-columns:1fr 1fr}
+.hero-visual{position:relative}
+.hero-3d{position:relative;aspect-ratio:1.32;margin:-30px -50px 0 -30px;opacity:0;transition:opacity 1s ease}
+.hero-3d.x3-ready{opacity:1}.hero-3d.x3-off{display:none}
+.hero-3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.x3-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.x3-label{position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--bg);background:linear-gradient(180deg,var(--gold-2),var(--gold));box-shadow:0 0 0 3px rgba(201,168,76,.18),0 0 18px rgba(201,168,76,.45);opacity:0;will-change:transform,opacity}
+.hero-3d::before{content:"";position:absolute;inset:6% 4% 10% 8%;background:radial-gradient(closest-side,rgba(226,140,60,.30),rgba(201,140,60,.10) 55%,rgba(0,0,0,0));filter:blur(10px);pointer-events:none}
+.hero-3d{cursor:zoom-in}
+.x3-labels{z-index:4}
+.x3-label::before{content:"";position:absolute;inset:-11px;border-radius:50%}
+.x3-label{border:0;padding:0;cursor:pointer;transition:background .25s,box-shadow .25s,filter .25s}
+.x3-label:hover{box-shadow:0 0 0 4px rgba(201,168,76,.28),0 0 22px rgba(232,204,108,.65)}
+.x3-label:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+.x3-label.on{background:var(--ink);color:var(--bg);box-shadow:0 0 0 4px rgba(232,204,108,.35),0 0 26px rgba(232,204,108,.8)}
+.x3-label.on::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px solid rgba(232,204,108,.6);animation:x3ping 1.6s ease-out infinite}
+.x3-label.dim{filter:grayscale(.6) brightness(.6)}
+@keyframes x3ping{from{transform:scale(.8);opacity:1}to{transform:scale(1.6);opacity:0}}
+.x3-card{position:absolute;left:0;top:0;z-index:3;width:min(272px,calc(100% - 16px));padding:14px 16px 12px;border-radius:10px;
+  background:linear-gradient(180deg,rgba(38,38,42,.82),rgba(20,20,21,.9));border:1px solid rgba(201,168,76,.32);
+  -webkit-backdrop-filter:blur(12px) saturate(1.2);backdrop-filter:blur(12px) saturate(1.2);
+  box-shadow:0 24px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05),0 0 0 1px rgba(0,0,0,.4);
+  opacity:0;visibility:hidden;pointer-events:none;cursor:default;will-change:transform}
+.x3-card.show{opacity:1;visibility:visible;pointer-events:auto;animation:x3in .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes x3in{from{opacity:0;filter:blur(4px);clip-path:inset(0 0 100% 0)}to{opacity:1;filter:none;clip-path:inset(0 0 0 0)}}
+.x3-card::before,.x3-card::after{content:"";position:absolute;width:12px;height:12px;border:1px solid var(--gold-2);pointer-events:none}
+.x3-card::before{top:-1px;left:-1px;border-right:0;border-bottom:0;border-top-left-radius:10px}
+.x3-card::after{bottom:-1px;right:-1px;border-left:0;border-top:0;border-bottom-right-radius:10px}
+.x3c-k{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.x3c-k b{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:linear-gradient(180deg,var(--gold-2),var(--gold));color:var(--bg);font-weight:500;letter-spacing:0}
+.x3-card h4{margin:8px 0 6px;font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);line-height:1.15}
+.x3-card p{font-size:.8rem;line-height:1.5;color:var(--ink-2)}
+.x3-card dl{margin:10px 0 0;display:grid;gap:0;border-top:1px solid var(--line)}
+.x3-card dl div{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)}
+.x3-card dl div:last-child{border-bottom:0}
+.x3-card dt{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.x3-card dd{margin:0;font-family:var(--mono);font-size:.74rem;color:var(--gold-2);text-align:right;font-variant-numeric:tabular-nums}
+.x3c-x{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;border:1px solid var(--line-2);background:rgba(0,0,0,.25);color:var(--ink-2);font-size:.95rem;line-height:1;cursor:pointer;display:grid;place-items:center}
+.x3c-x:hover{color:var(--ink);border-color:var(--gold)}
+/* Phones: the card docks to the bottom of the screen as a sheet, the model stays in view above it. */
+.x3-card.dock{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));top:auto;width:auto;max-width:520px;margin:0 auto;z-index:60;transform:none}
+.x3-card.dock.show{animation:x3up .34s cubic-bezier(.2,.8,.2,1)}
+@keyframes x3up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.x3-card.show,.x3-card.dock.show{animation:none}.x3-label.on::after{animation:none}}
+.x3-hint{position:absolute;right:8%;top:10%;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);pointer-events:none}
+.hero-visual .telemetry{position:relative;z-index:2;margin:-34px 8% 0 -32px;padding:14px}
+.hero-visual .telemetry .tgrid{grid-template-columns:repeat(3,1fr);gap:8px;padding-top:12px}
+.hero-visual .tcell{padding:10px 12px}
+.hero-visual .tcell small{font-size:.6rem;letter-spacing:.12em;margin-bottom:4px;white-space:nowrap}
+.hero-visual .spark{margin-top:10px;padding-top:8px}
+.hero-visual .spark svg{height:44px}
+@media (max-width:1100px){.hero-visual .telemetry{margin-left:-14px;margin-right:4%}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:28px}.hero-visual{display:contents}.hero-3d{order:-1;margin:-20px -16px -10px}.hero-visual .telemetry{order:1;margin:4px 0 0}}
+
+.telemetry .bar-r{display:inline-flex;align-items:center;gap:12px}
+.telemetry .bar .mode{font-size:.66rem}
+.tkey{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:12px}
+.tk{border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;background:rgba(0,0,0,.25)}
+.tk small{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tk .big{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.tk .big em{font-style:normal;font-family:var(--mono);font-weight:500;font-size:.9rem;margin-left:5px;color:var(--muted)}
+.tk .big em.pre{margin:0 2px 0 0;font-family:var(--display);font-weight:700;font-size:1.3rem}
+.tk p{margin-top:8px;font-family:var(--mono);font-size:.68rem;line-height:1.45;color:var(--ink-2)}
+.tk.heat{background:linear-gradient(160deg,rgba(226,102,58,.16),rgba(0,0,0,.25) 60%);border-color:rgba(226,102,58,.35)}
+.tk.heat .big{color:#f08a5a}.tk.heat .big em{color:#e2663a}
+.tk.earn{background:linear-gradient(160deg,rgba(201,168,76,.16),rgba(0,0,0,.25) 60%);border-color:rgba(201,168,76,.35)}
+.tk.earn .big{color:var(--gold-2)}.tk.earn .big em{color:var(--gold)}
+.tk p span{color:var(--ink)}
+@media (max-width:420px){.tk .big{font-size:1.6rem}.tk{padding:10px 11px}}
+.telemetry .bar{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:12px;border-bottom:1px solid var(--line)}
+.telemetry .bar b{color:var(--good);display:inline-flex;align-items:center;gap:6px;font-weight:500}
+.telemetry .bar b::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--good);box-shadow:0 0 10px var(--good)}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:14px}
+.tcell{background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.tcell small{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tcell .v{font-family:var(--display);font-size:1.7rem;font-weight:700;color:var(--ink);line-height:1}
+.tcell .v span{font-size:.85rem;color:var(--gold);margin-left:4px;font-family:var(--mono);font-weight:500}
+.tcell.heat .v{color:var(--gold-2)}
+.spark{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+.spark svg{width:100%;height:64px;display:block}
+
+/* stat strip */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.stats .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{padding:28px 20px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+@media (max-width:900px){.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.stat b{display:block;font-family:var(--display);font-size:2.2rem;font-weight:700;color:var(--gold-2);line-height:1}
+.stat b span{font-size:1rem;color:var(--gold);font-family:var(--mono);font-weight:500;margin-left:4px}
+.stat small{display:block;margin-top:8px;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:420px){.stat{padding:22px 14px}.stat b{font-size:1.75rem}.stat b span{font-size:.85rem;margin-left:3px}}
+
+/* flow diagram */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:16px;align-items:stretch}
+@media (max-width:900px){.flow{grid-template-columns:1fr}.flow .arrow{transform:rotate(90deg);justify-self:center}}
+.flow .arrow{display:flex;align-items:center;color:var(--gold)}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:12px;align-content:start}
+.step .n{font-family:var(--mono);color:var(--gold);font-size:.72rem;letter-spacing:.16em}
+.step svg{width:100%;height:120px}
+.step dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-family:var(--mono);font-size:.76rem;margin:0}
+.step dt{color:var(--muted)}
+.step dd{margin:0;color:var(--ink-2)}
+
+/* exploded */
+.exploded{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media (max-width:900px){.exploded{grid-template-columns:1fr}}
+.exploded svg{width:100%;height:auto}
+.layers{display:grid;gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.layer{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 16px;border-bottom:1px solid var(--line);background:var(--panel)}
+.layer:last-child{border-bottom:0}
+.layer .k{font-family:var(--mono);color:var(--gold);font-size:.8rem;padding-top:3px}
+.layer b{display:block;font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;font-size:.95rem}
+.layer p{color:var(--ink-2);font-size:.86rem;margin-top:3px}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:.9rem}
+.tbl th,.tbl td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tbl td{color:var(--ink-2)}
+.tbl td:first-child{color:var(--ink);font-weight:500}
+.tbl .num{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+.mode{display:inline-flex;align-items:center;gap:8px}
+.mode i{width:10px;height:10px;border-radius:2px;background:var(--gold)}
+.mode.eco i{background:var(--good)}
+.mode.max i{background:var(--heat)}
+
+/* spec columns */
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.specs{grid-template-columns:minmax(0,1fr)}}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.spec h3{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.spec h3 svg{width:20px;height:20px;color:var(--gold)}
+.spec ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.spec li{display:grid;grid-template-columns:1fr auto;gap:12px;font-size:.86rem;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.spec li:last-child{border-bottom:0;padding-bottom:0}
+.spec li span{color:var(--ink-2)}
+.spec li b{font-family:var(--mono);font-weight:500;color:var(--ink);text-align:right;white-space:nowrap}
+@media (max-width:480px){.spec li b{white-space:normal}}
+
+/* app */
+.app{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.phones{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:end;margin-top:12px}
+@media (max-width:900px){.phones{grid-template-columns:1fr;max-width:340px;margin-inline:auto}}
+.phone{background:#0d0d0e;border:1px solid var(--line-2);border-radius:34px;padding:12px;box-shadow:0 30px 70px rgba(0,0,0,.6),inset 0 0 0 2px #1c1c1f}
+.screen{background:#121214;border-radius:24px;padding:18px 16px 20px;min-height:520px;display:grid;align-content:start;gap:14px;position:relative;overflow:hidden}
+.screen::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:12px;background:#000}
+.sb{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.68rem;color:var(--muted);padding:2px 4px 0}
+.st{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:.85rem;color:var(--ink-2);margin-top:10px}
+.big{font-family:var(--display);font-size:2.3rem;font-weight:700;color:var(--gold-2);line-height:1}
+.big small{font-size:.8rem;color:var(--gold);font-family:var(--mono);font-weight:500;margin-left:5px}
+.row{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;padding:10px 12px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.row b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+.row span{color:var(--ink-2)}
+.pill{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--gold-dim);color:var(--gold-2)}
+.pill.off{background:rgba(255,255,255,.06);color:var(--muted)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:3px;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.seg span{padding:7px 0;border-radius:8px;color:var(--muted)}
+.seg span.on{background:var(--gold);color:var(--bg);font-weight:500}
+.dial{display:grid;place-items:center;padding:4px 0}
+.dial svg{width:190px;height:190px}
+.caption{text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+@media (max-width:900px){.feat{grid-template-columns:1fr}}
+.feat div{border-left:2px solid var(--gold);padding:4px 0 4px 16px}
+.feat b{display:block;font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.feat p{color:var(--ink-2);font-size:.9rem}
+.store{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line-2);border-radius:10px;padding:9px 14px;color:var(--ink);background:#000}
+.store:hover{border-color:var(--gold);text-decoration:none}
+.store svg{width:22px;height:22px}
+.app-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.app-cta .btn{padding:12px 18px}
+.app-cta .btn,.app-cta .store{min-height:48px;box-sizing:border-box}
+.screen.live{display:block;padding:0;height:520px;min-height:520px;background:#121214}
+/* Same 84x22 notch as the mock-ups; the embedded app centres its status bar on it and starts the title below it. */
+.screen.live::before{z-index:2;pointer-events:none}
+.screen.live iframe{display:block;width:100%;height:100%;border:0;color-scheme:dark;
+  /* Until a lazy frame has loaded, its background draws the app's tab bar, so the screen still reads as a phone. */
+  background:radial-gradient(circle at 50% 21px,#3a3a3e 0 4px,transparent 4.5px) left bottom/20% 55px repeat-x,
+    linear-gradient(#2f2f34,#2f2f34) left bottom 54px/100% 1px no-repeat,
+    linear-gradient(#0f0f10,#0f0f10) left bottom/100% 55px no-repeat,#121214}
+.app-hint{text-align:center;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;color:var(--ink-2);margin:26px 0 0;text-wrap:balance}
+.store small{display:block;font-size:.62rem;color:var(--muted);line-height:1}
+.store b{display:block;font-family:var(--display);font-size:1rem;line-height:1.1}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+@media (max-width:900px){.calc{grid-template-columns:1fr}}
+.form{display:grid;gap:16px}
+.field{display:grid;gap:6px}
+.field label{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+.field label output{color:var(--gold-2)}
+.field input[type=number],.field select{width:100%;background:var(--bg);border:1px solid var(--line-2);border-radius:var(--r);color:var(--ink);font-family:var(--mono);font-size:.95rem;padding:10px 12px}
+.field input[type=range]{width:100%;accent-color:var(--gold)}
+.field .fhint{font-family:var(--mono);font-size:.68rem;line-height:1.4;color:var(--warn)}
+.field .fhint:empty{display:none}
+.results{display:grid;gap:16px}
+.res-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:600px){.res-tiles{grid-template-columns:1fr}}
+.res{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.res small{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.res b{font-family:var(--display);font-size:1.6rem;font-weight:700;line-height:1;color:var(--ink)}
+.res.hi b{color:var(--gold-2)}
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.chart h4{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.chart svg{width:100%;height:150px;display:block}
+.chart .legend{display:flex;gap:18px;font-family:var(--mono);font-size:.72rem;color:var(--ink-2);margin-top:10px;flex-wrap:wrap}
+.chart .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.note{font-size:.8rem;color:var(--muted);line-height:1.5}
+
+/* range */
+.range{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.range{grid-template-columns:1fr}}
+.prod{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.prod .draw{background:var(--bg);border-bottom:1px solid var(--line);padding:18px;display:grid;place-items:center;min-height:220px}
+.prod .draw svg{width:100%;height:190px}
+.prod .body{padding:20px;display:grid;gap:10px;align-content:start}
+.prod .body h3{display:flex;justify-content:space-between;align-items:baseline}
+.prod .body h3 small{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--muted);text-transform:none}
+.prod .body p{color:var(--ink-2);font-size:.9rem}
+.prod ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:5px;font-family:var(--mono);font-size:.76rem;color:var(--ink-2)}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+@media (max-width:900px){.road{grid-template-columns:1fr}}
+.ph{padding:20px;border-right:1px solid var(--line)}
+.ph:last-child{border-right:0}
+@media (max-width:900px){.ph{border-right:0;border-bottom:1px solid var(--line)}.ph:last-child{border-bottom:0}}
+.ph .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.ph b{display:block;font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;margin:8px 0 6px}
+.ph p{font-size:.84rem;color:var(--ink-2)}
+.ph .state{margin-top:12px}
+
+/* faq */
+details{border-bottom:1px solid var(--line);padding:16px 0}
+details summary{cursor:pointer;font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;font-size:1rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+details summary::after{content:"+";color:var(--gold);font-family:var(--mono)}
+details[open] summary::after{content:"–"}
+details p{color:var(--ink-2);margin-top:10px;max-width:70ch;font-size:.95rem}
+
+/* waitlist */
+.wait{background:linear-gradient(180deg,var(--bg-2),var(--bg));border-top:1px solid var(--line)}
+.wait form{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;margin-top:24px;max-width:760px}
+@media (max-width:700px){.wait form{grid-template-columns:1fr}}
+.wait input,.wait select{background:var(--bg);border:1px solid var(--line-2);border-radius:var(--r);color:var(--ink);font-family:var(--mono);padding:12px 14px;font-size:.9rem}
+.ok{margin-top:14px;font-family:var(--mono);font-size:.8rem;color:var(--good);min-height:1.2em}
+
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:.8rem}
+footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media (max-width:700px){footer .wrap{grid-template-columns:1fr}}
+footer p{max-width:70ch}
+
+/* pitch */
+.pitch{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.prob{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.prob{grid-template-columns:1fr}}
+.prob .card{border-top:3px solid var(--crit)}
+.sol .card{border-top:3px solid var(--good)}
+.prob .card svg,.sol .card svg{width:34px;height:34px;color:var(--gold);margin-bottom:12px}
+.market{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+@media (max-width:900px){.market{grid-template-columns:1fr}}
+.mk{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.mk b{display:block;font-family:var(--display);font-size:2.6rem;font-weight:700;color:var(--gold-2);line-height:1}
+.mk b span{font-size:1rem;font-family:var(--mono);color:var(--gold);font-weight:500;margin-left:6px}
+.mk small{display:block;margin-top:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mk p{color:var(--ink-2);font-size:.9rem;margin-top:10px}
+.timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:0;margin-top:20px;border-top:1px solid var(--line-2);position:relative}
+@media (max-width:900px){.timeline{grid-template-columns:1fr;border-top:0;border-left:1px solid var(--line-2)}}
+.tl{padding:18px 14px 0 0;position:relative}
+.tl::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px var(--bg-2)}
+@media (max-width:900px){.tl{padding:0 0 18px 18px}.tl::before{top:4px;left:-5px}}
+.tl .y{font-family:var(--display);font-weight:700;color:var(--gold-2);font-size:1.1rem}
+.tl p{font-size:.82rem;color:var(--ink-2);margin-top:4px}
+.model{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:20px}
+@media (max-width:900px){.model{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.model{grid-template-columns:1fr}}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.gal{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.gal{grid-template-columns:1fr}}
+.gal figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:zoom-in}
+.gal figure.wide{grid-column:span 2}
+@media (max-width:600px){.gal figure.wide{grid-column:span 1}}
+.gal img{display:block;width:100%;height:220px;object-fit:cover;background:#fff}
+.gal figure.wide img{height:300px}
+.gal figcaption{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.gal figcaption span{color:var(--muted)}
+.lb{position:fixed;inset:0;background:rgba(10,10,11,.94);display:none;place-items:center;z-index:100;padding:24px}
+.lb.on{display:grid}
+.lb img{max-width:min(1400px,calc(100vw - 48px));max-height:84vh;border:1px solid var(--line-2);border-radius:var(--r);background:#fff}
+.lb .cap{position:absolute;bottom:22px;left:16px;right:16px;text-align:center;font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.lb button{position:absolute;top:18px;right:18px;background:var(--panel);border:1px solid var(--line-2);color:var(--ink);border-radius:var(--r);padding:8px 14px;font-family:var(--mono);cursor:pointer}
+.am{position:fixed;inset:0;background:rgba(10,10,11,.94);display:none;z-index:110;overscroll-behavior:contain;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.am.on{display:grid;grid-template-rows:auto 1fr;justify-items:center;align-items:center}
+.am-bar{display:flex;justify-content:flex-end;align-items:center;gap:12px;width:100%;box-sizing:border-box;padding:16px 18px 0}
+.am-bar a{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line-2);border-radius:var(--r);padding:8px 12px}
+.am-bar a:hover{color:var(--gold-2);border-color:var(--gold);text-decoration:none}
+.am-bar button{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);background:transparent;border:1px solid var(--line-2);border-radius:var(--r);padding:8px 12px;cursor:pointer}
+.am-bar button:hover{color:var(--gold-2);border-color:var(--gold)}
+.am-bar a,.am-bar button{line-height:1.5}
+.am-edge{position:absolute;top:0;left:0;width:1px;height:1px;overflow:hidden;opacity:0}
+.am-fit{position:relative;overflow:visible}
+.am-phone{position:absolute;left:0;top:0;transform-origin:0 0;background:#0d0d0e;border:1px solid var(--line-2);border-radius:52px;padding:14px;box-shadow:0 30px 70px rgba(0,0,0,.6),inset 0 0 0 2px #1c1c1f}
+.am-phone .am-screen{position:relative;width:390px;height:844px;border-radius:40px;overflow:hidden;background:#121214}
+.am-phone .am-screen::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:92px;height:20px;border-radius:12px;background:#000;z-index:2;pointer-events:none}
+.am-phone iframe{display:block;width:100%;height:100%;border:0;background:#121214;color-scheme:dark}
+html.am-lock,html.am-lock body{overflow:hidden}
+/* Full bleed on a phone: portrait under 480px wide, or a touch screen under 500px tall (a phone in landscape). Keep in step with AM_BLEED. */
+@media (max-width:479.98px), (max-height:499.98px) and (pointer:coarse){
+  .am.on{grid-template-rows:auto 1fr;align-items:stretch;justify-items:stretch}
+  .am-bar{padding:8px 10px;background:var(--bg)}
+  .am-fit{width:auto!important;height:auto!important}
+  .am-phone{position:absolute;inset:0;transform:none!important;border:0;border-radius:0;padding:0;box-shadow:none}
+  .am-phone .am-screen{width:100%;height:100%;border-radius:0}
+  .am-phone .am-screen::before{display:none}
+}
+
+/* derived drawings */
+.draws{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media (max-width:900px){.draws{grid-template-columns:1fr}}
+.dw{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.dw .sheet{background:#f4f2ec;padding:14px;border-bottom:1px solid var(--line)}
+.dw .sheet svg{width:100%;height:auto;display:block}
+.dw .meta{display:grid;grid-template-columns:1fr auto;gap:10px;padding:14px 16px}
+.dw .meta b{display:block;font-family:var(--display);text-transform:uppercase;letter-spacing:.04em}
+.dw .meta p{font-size:.84rem;color:var(--ink-2);margin-top:4px}
+.dw .meta .rev{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+
+/* funding */
+.fund{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fund .tbl td:first-child{min-width:220px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px solid var(--line-2);white-space:nowrap}
+.chip i{width:6px;height:6px;border-radius:50%;background:var(--muted)}
+.chip.prep i{background:var(--warn)}
+.chip.map i{background:var(--gold)}
+.chip.part i{background:var(--good)}
+.fund-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+@media (max-width:900px){.fund-grid{grid-template-columns:1fr}}
+.fund-grid ol{margin:10px 0 0;padding-left:20px;color:var(--ink-2);font-size:.92rem;display:grid;gap:8px}
+
+
+/* parallax v2: depth layers, section numerals, scroll reveal, hero pointer drift */
+.pxe{will-change:transform}
+.bignum{right:-1vw;top:-28px;font-family:var(--display);font-weight:700;font-style:italic;font-size:clamp(9rem,22vw,21rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(201,168,76,.13);letter-spacing:-.03em;user-select:none}
+.hero .px .wave.w2{opacity:.55}
+.hero .wrap>div:first-child{position:relative;z-index:1}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.exploded svg g[data-ex]{transition:transform .12s linear}
+@media (max-width:700px){.bignum{font-size:7rem;top:-10px}}
+
+/* ===== Phone layout (2026-11-08) ===== */
+.phone-tabs{display:none}
+@media (max-width:900px){
+  .hero{padding:12px 0 56px}
+  .hero-3d{aspect-ratio:1.55}
+  .hero-ctas .btn{flex:1 1 100%;justify-content:center}
+  /* the three live phones become one phone with a switcher */
+  .phone-tabs{display:flex;gap:6px;justify-content:center;margin:4px auto 18px;padding:4px;border:1px solid var(--line-2);border-radius:999px;background:var(--panel);max-width:340px}
+  .phone-tabs button{flex:1;min-height:40px;border:0;border-radius:999px;background:transparent;color:var(--ink-2);font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+  .phone-tabs button[aria-selected="true"]{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:var(--bg)}
+  .phones > div:not(.on){display:none}
+  .phones .caption{display:none}
+}
+@media (max-width:700px){
+  /* tables read as stacked cards */
+  .tbl-wrap{overflow:visible;background:transparent;border:0}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody{display:block}
+  .tbl tr{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;padding:16px;margin-bottom:12px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}
+  .tbl td{display:block;padding:0;border:0}
+  .tbl td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .tbl td:first-child{grid-column:1/-1;font-family:var(--display);font-size:1.05rem;letter-spacing:.03em;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .tbl td:first-child::before{display:none}
+  .tbl-stack tr{grid-template-columns:1fr}
+  /* quieter section numerals so they never sit on top of text */
+  .bignum{font-size:5.5rem;top:4px;right:6px;-webkit-text-stroke-color:rgba(201,168,76,.07)}
+  /* comfortable touch targets */
+  details{padding:4px 0}
+  details summary{min-height:48px;align-items:center;padding:8px 0}
+  .field input[type=range]{height:44px}
+  /* product range headings stack */
+  .prod .body h3{flex-direction:column;align-items:flex-start;gap:4px}
+}
+@media (max-width:600px){
+  .nav{height:60px}
+  .nav > .btn{padding:10px 14px;font-size:.78rem}
+  /* nothing under 11 px on a phone */
+  .tag,.x3-hint,.tk small,.tcell small,.hero-visual .tcell small,.stat small,.res small,.chip,.dw .meta .rev,.ph .k,.prod .body h3 small,.mk small,.telemetry .bar .mode{font-size:11px}
+  .hero-visual .tcell small{white-space:normal;letter-spacing:.08em}
+  .tk p{font-size:11.5px}
+  .store small{font-size:10px}
+  .brand{min-height:44px;display:flex;align-items:center}
+  .spark > div{font-size:11px !important}
+  .gal figcaption,.gal figcaption span,.field label,.field output{font-size:11.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .px > *{transform:none !important}
+  .pxe{transform:none !important}
+  .rv{opacity:1;transform:none;transition:none}
+  .exploded svg g[data-ex]{transition:none}
+  .btn{transition:none}
+}
+/* iOS Safari zooms the page into any field under 16 px when it gets focus. */
+@media (max-width:700px),(pointer:coarse){
+  .wait input,.wait select,.field input[type=number],.field select{font-size:16px}
+}
+/* Close buttons big enough to tap, and a header the dial glow cannot show through on a phone. */
+@media (pointer:coarse){
+  .am-bar a,.am-bar button,.lb button{min-height:44px;display:inline-flex;align-items:center}
+}
+@media (max-width:900px){
+  header{background:rgba(20,20,21,.96)}
+}
+/* The hero's 3D radiator bleeds past its column by design; clipped at the page edge, so it never widens the page
+   (on a phone a wider layout viewport lets the whole page pan sideways). The gridlines still run above and below. */
+.hero{overflow-x:clip}
+/* One column on a phone that can shrink below its content's min width, so nothing in the hero is wider than the screen. */
+@media (max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.hero .wrap>*{min-width:0}}
+/* The narrowest phones: the header button stays on one line and the hero telemetry fits its column. */
+@media (max-width:380px){
+  .nav{gap:10px}.nav>.btn{padding:10px 12px;font-size:.78rem;white-space:nowrap}
+  .hero-visual .telemetry .tgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .hero-visual .tcell{padding:8px;min-width:0}
+  .hero-visual .tcell .v{font-size:1.25rem}
+  .hero-visual .tcell small{font-size:11px;letter-spacing:.04em;white-space:normal;line-height:1.2}
+  .hero-visual .tcell .v span{font-size:11px;margin-left:2px}
+  .hero-visual .spark>div{flex-wrap:wrap;gap:2px 10px}.hero-visual .spark>div>span{white-space:nowrap}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Satostat home">
+      <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><path d="M9.15 38.85A21 21 0 1 1 38.85 38.85" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/><g stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round"><path d="M3.5 24h3M24 3.5v3M44.5 24h-3M9.5 9.5l2.1 2.1M38.5 9.5l-2.1 2.1"/></g><g transform="skewX(-10)"><rect x="16" y="12" width="20" height="25" rx="5" fill="#b8953c"/><rect x="16" y="12" width="20" height="4" rx="2" fill="#c9a84c"/><g stroke="#141415" stroke-width="1.3" opacity=".6"><path d="M18 20h16M18 25.5h16M18 31h16"/></g></g><path d="M28.6 8 20.4 25h5.2L18.6 40.5 32.2 21.5h-6z" fill="#141415"/><path d="M29.4 8 21.2 25h5.2L19.4 40.5 33 21.5h-6z" fill="#f3dd86"/></svg>
+      <span>Satostat<small style="display:block;font-family:var(--mono);font-style:normal;font-weight:400;font-size:.58rem;letter-spacing:.22em;color:var(--muted);margin-top:1px">PROOF OF HEAT</small></span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#pitch">Pitch</a>
+      <a href="#how">How</a>
+      <a href="#thermal">Thermal</a>
+      <a href="#plans">Plans</a>
+      <a href="#engine">Engine</a>
+      <a href="#app">App</a>
+      <a href="#economics">Economics</a>
+      <a href="#range">Range</a>
+      <a href="#funding">Funding</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" href="#waitlist">Join waitlist</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="px" aria-hidden="true">
+    <div class="gridlines" data-px="0.12" data-mx="-8"></div>
+    <div class="glow" style="left:55%;top:-20%" data-px="0.25" data-mx="-28"></div>
+    <svg class="wave w2" style="bottom:-70px" data-px="-0.34" data-mx="-10" viewBox="0 0 1400 240" preserveAspectRatio="none"><g fill="none" stroke="#c9a84c" stroke-opacity=".18"><path d="M0 210C300 130 500 250 700 170S1100 90 1400 190"/><path d="M0 120C300 40 500 160 700 80S1100 0 1400 100"/></g></svg>
+    <svg class="wave" style="bottom:-40px" data-px="-0.18" data-mx="6" viewBox="0 0 1400 240" preserveAspectRatio="none"><g fill="none" stroke="#c9a84c" stroke-opacity=".35"><path d="M0 200C300 120 500 240 700 160S1100 80 1400 180"/><path d="M0 170C300 90 500 210 700 130S1100 50 1400 150"/><path d="M0 230C300 150 500 270 700 190S1100 110 1400 210"/><path d="M0 140C300 60 500 180 700 100S1100 20 1400 120"/></g></svg>
+  </div>
+  <div class="wrap">
+    <div data-pxe="-0.08">
+      <div class="eyebrow">Proof of heat · QuantumRad SHA-256 mining radiator</div>
+      <h1 style="margin-top:18px">Heat your room.<br>Mine Bitcoin.<br><em>Get paid for the warmth.</em></h1>
+      <p class="lede" style="margin-top:22px">Satostat is a wall-mounted electric radiator whose heating element is an array of Bitcoin mining ASICs. Every watt that warms the room also hashes on the network, and the rewards land in your wallet through the Satostat iOS app.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#economics">Run the numbers</a>
+        <a class="btn ghost" href="#thermal">See the architecture</a>
+      </div>
+      <div class="hero-meta">
+        <span class="tag"><i></i>Three heat modes</span>
+        <span class="tag"><i></i>Stratum V2</span>
+        <span class="tag"><i></i>iOS app</span>
+        <span class="tag"><i></i>Target specification</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-3d" id="hero-3d" data-pxe="0.04" role="img" aria-label="Animated 3D model of the QuantumRad V1 mining radiator built from the plan set: fluted front panel, aluminium fin stack, six hashboards, two fan rows and the rear wall rails">
+        <canvas></canvas>
+        <div class="x3-labels" aria-hidden="true"></div>
+        <div class="x3-hint" aria-hidden="true">Hover to look inside</div>
+      </div>
+      <div class="telemetry" data-pxe="0.12" data-mx="14" aria-label="Live telemetry from a QuantumRad unit">
+        <div class="bar"><span>QRAD-01 · LIVING ROOM</span><span class="bar-r"><span class="mode max"><i></i>MAX</span><b>Hashing</b></span></div>
+        <div class="tkey">
+          <div class="tk heat"><small>Heat output</small><div class="big"><span id="t-watt">792</span><em>W</em></div><p><span id="t-kwh">14.3</span> kWh into the room today</p></div>
+          <div class="tk earn"><small>Earned today</small><div class="big"><em class="pre">£</em><span id="t-gbp">0.99</span></div><p><span id="t-sats">1,412</span> sats · <span id="t-pay">28</span>% of today's heat paid back</p></div>
+        </div>
+        <div class="tgrid">
+          <div class="tcell"><small>Hashrate</small><div class="v"><span id="t-hash">37.9</span><span>TH/s</span></div></div>
+          <div class="tcell"><small>Surface temp</small><div class="v"><span id="t-temp">61.4</span><span>°C</span></div></div>
+          <div class="tcell"><small>Room</small><div class="v"><span id="t-room">21.5</span><span>°C</span></div></div>
+        </div>
+        <div class="spark">
+          <svg viewBox="0 0 400 64" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="sg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c9a84c" stop-opacity=".35"/><stop offset="1" stop-color="#c9a84c" stop-opacity="0"/></linearGradient></defs>
+            <path id="spark-fill" fill="url(#sg)" d=""/>
+            <path id="spark-line" fill="none" stroke="#e8cc6c" stroke-width="2" d=""/>
+          </svg>
+          <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:.64rem;color:var(--muted);margin-top:4px"><span>hashrate · last 24 h</span><span>£<span id="t-month">8.41</span> earned this month</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>400–800<span>W</span></b><small>Variable power envelope</small></div>
+    <div class="stat"><b>38<span>TH/s</span></b><small>Peak hashrate at MAX</small></div>
+    <div class="stat"><b>48–68<span>°C</span></b><small>Front surface temperature</small></div>
+    <div class="stat"><b>890×420<span>mm</span></b><small>Panel, 100 mm off the wall</small></div>
+  </div>
+</div>
+
+<!-- PITCH -->
+<section id="pitch" class="pitch">
+  <div class="px" aria-hidden="true"><div class="glow" style="right:-30%;top:-10%;opacity:.5" data-px="0.2"></div></div>
+  <div class="wrap">
+    <div class="sec-head" data-pxe="-0.05">
+      <div class="eyebrow">The pitch</div>
+      <h2>The world's problem, and the radiator that pays you to fix it.</h2>
+      <p class="lede">Satostat started as a patented six-board mining radiator built in the UK during the 2022 energy crisis. The silicon has changed to Bitcoin ASICs; the problem it was built for has not.</p>
+    </div>
+
+    <h3 style="color:var(--crit);margin-bottom:14px">The problem</h3>
+    <div class="prob">
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 12 4l9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg><h3>Heating is unaffordable</h3><p>As of 2022, more than a third of Britons could not afford to heat their homes to a comfortable level. Every winter since, the gap between tariffs and incomes has stayed open.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h16M6 20V9l4-3v14M10 20V6l4 3v11M14 20v-6l4-2v8"/><path d="M8 4c0-2 2-2 2-4" opacity=".6"/></svg><h3>Fossil fuels drive warming</h3><p>Gas boilers and fossil generation release vast amounts of harmful by-products. Domestic heat is one of the last large sectors still to be electrified.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8h14v13M3 8l2-4h14l2 4M9 21v-5h6v5"/></svg><h3>Business bills keep rising</h3><p>Commercial property owners continue to see energy costs climb, the most visible impact of the energy crisis. Heat is a cost line with no return.</p></div>
+    </div>
+
+    <h3 style="color:var(--good);margin:40px 0 14px">The solution</h3>
+    <div class="prob sol">
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 12 4l9 7v9H3z"/><path d="M12 10v6M9.5 13.5h5"/></svg><h3>Same heat, plus income</h3><p>The same or better heating than a traditional electric radiator, while the unit earns Bitcoin rewards for the household. Heat you were already paying for becomes heat with a rebate.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3c3 3 3 15 0 18M3 12h18M5 7c4 2 10 2 14 0M5 17c4-2 10-2 14 0"/></svg><h3>No fossil fuel at the point of use</h3><p>Fully electric. Paired with rooftop solar or a green tariff, the heat and the hashing are both zero-carbon at the home.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8h14v13"/><path d="M12 11v7M9 14l3-3 3 3"/></svg><h3>Commercial heat that pays back</h3><p>For offices, workshops and communal areas, rewards offset the cost of warming the space. Multi-unit fleets report energy and earnings per room.</p></div>
+    </div>
+
+    <h3 style="margin:40px 0 0">Market</h3>
+    <div class="market">
+      <div class="mk"><b>8<span>billion</span></b><small>People in our world · total available market</small><p>Everyone who needs to be warm in winter is a potential user of a heater that pays.</p></div>
+      <div class="mk"><b>6.9<span>billion</span></b><small>Have access to electricity (2022) · serviceable market</small><p>The addressable base for any fully electric heating appliance with a network connection.</p></div>
+      <div class="mk"><b>$1.3<span>trillion +</span></b><small>Renewable energy market, 2030 · projected</small><p>Valued at $881.7 billion in 2020 and forecast to reach $1.9 trillion by 2030 at 8.4 % CAGR. Electrified heat is the fastest-moving slice.</p></div>
+    </div>
+
+    <h3 style="margin:40px 0 0">How Satostat makes money</h3>
+    <div class="model">
+      <div class="card"><h3>Hardware</h3><p>Radiators and desktop units sold direct and through installers. Hardware margin on a premium electric radiator with a serviceable board bay.</p></div>
+      <div class="card"><h3>App Pro</h3><p>Free app for control and payouts. Optional subscription for tariff optimisation, multi-home fleets, exports and advanced scheduling.</p></div>
+      <div class="card"><h3>Pool share</h3><p>Default pool routing carries a small fee share, with users free to point the unit at any pool or their own node.</p></div>
+      <div class="card"><h3>Pilots and retrofit</h3><p>Paid pilot deployments with housing providers and commercial landlords, feeding the government-funded retrofit route below.</p></div>
+    </div>
+
+    <h3 style="margin:40px 0 0">Timeline</h3>
+    <div class="timeline">
+      <div class="tl"><div class="y">2019</div><p>Founded as an idea: change how homes are heated by putting mining hardware inside the radiator.</p></div>
+      <div class="tl"><div class="y">2020</div><p>The world's smallest six-card mining system with CPU mining built, setting the form factor.</p></div>
+      <div class="tl"><div class="y">2021</div><p>Patented design and working prototype of the mining radiator completed.</p></div>
+      <div class="tl"><div class="y">2022</div><p>Plan set, 3D renders and investor deck. Partnership model with governments and housing associations defined.</p></div>
+      <div class="tl"><div class="y">2023</div><p>Further prototype stages to reach the finest level of radiator possible before market.</p></div>
+      <div class="tl"><div class="y">2025</div><p>Platform moves from GPU and CPU cards to SHA-256 Bitcoin ASIC hashboards. Thermal targets recalculated.</p></div>
+      <div class="tl"><div class="y">2026</div><p>Rebranded as Satostat. iOS app, derived plan set and funding programme under way.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head" data-pxe="-0.05">
+      <div class="eyebrow">How it works</div>
+      <h2>One watt in. Heat and hashes out.</h2>
+      <p class="lede">An electric heater converts electricity to heat at 100%. So does a mining ASIC. The difference is that the ASIC does useful proof-of-work on the way, and the Bitcoin network pays for it.</p>
+    </div>
+    <div class="flow">
+      <div class="step">
+        <span class="n">01 · POWER</span>
+        <svg viewBox="0 0 240 120" aria-hidden="true"><g fill="none" stroke="#c9a84c" stroke-width="2"><rect x="20" y="30" width="60" height="60" rx="6"/><path d="M80 60h40M120 40v40M160 40v40M120 60h40M160 60h40"/><path d="M50 40 42 62h10l-8 20 18-28h-10z" fill="#e8cc6c" stroke="none"/></g><text x="170" y="30" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">230 V AC</text><text x="100" y="108" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">PFC + DC-DC → 12 V rails</text></svg>
+        <h3>Mains to hashboard rails</h3>
+        <dl><dt>Input</dt><dd>230 V AC, 13 A plug, UK/EU</dd><dt>PSU</dt><dd>Titanium-class, active PFC</dd><dt>Envelope</dt><dd>400 / 600 / 800 W set by heat mode</dd></dl>
+      </div>
+      <div class="arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24"><path d="M4 12h14m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+      <div class="step">
+        <span class="n">02 · HASH</span>
+        <svg viewBox="0 0 240 120" aria-hidden="true"><g fill="none" stroke="#c9a84c" stroke-width="2"><rect x="30" y="20" width="180" height="80" rx="4"/><g fill="#c9a84c" stroke="none" opacity=".8"><rect x="42" y="32" width="26" height="26" rx="2"/><rect x="78" y="32" width="26" height="26" rx="2"/><rect x="114" y="32" width="26" height="26" rx="2"/><rect x="150" y="32" width="26" height="26" rx="2"/><rect x="42" y="66" width="26" height="26" rx="2"/><rect x="78" y="66" width="26" height="26" rx="2"/><rect x="114" y="66" width="26" height="26" rx="2"/><rect x="150" y="66" width="26" height="26" rx="2"/></g><path d="M186 40h14M186 60h14M186 80h14" stroke="#7f7c74"/></g><text x="34" y="114" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">6 hashboards · SHA-256d</text></svg>
+        <h3>ASIC array does the work</h3>
+        <dl><dt>Silicon</dt><dd>5 nm SHA-256 ASICs</dd><dt>Efficiency</dt><dd>≈ 21 J/TH at the wall</dd><dt>Output</dt><dd>Up to 38 TH/s, 100 % as heat</dd></dl>
+      </div>
+      <div class="arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24"><path d="M4 12h14m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+      <div class="step">
+        <span class="n">03 · HEAT + REWARD</span>
+        <svg viewBox="0 0 240 120" aria-hidden="true"><g fill="none" stroke="#c9a84c" stroke-width="2"><path d="M30 95V40c0-10 10-10 10 0v55M60 95V40c0-10 10-10 10 0v55M90 95V40c0-10 10-10 10 0v55" opacity=".7"/><path d="M35 30c0-8-8-8-8-16M65 30c0-8-8-8-8-16M95 30c0-8-8-8-8-16" stroke="#e2663a"/><circle cx="180" cy="60" r="28"/><path d="M172 48h14a7 7 0 0 1 0 14h-14zM172 62h16a7 7 0 0 1 0 14h-16zM180 42v6M180 76v6" stroke="#e8cc6c"/></g><text x="22" y="114" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">Warm air</text><text x="150" y="114" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">Block reward share</text></svg>
+        <h3>Room warms, wallet fills</h3>
+        <dl><dt>Heat path</dt><dd>Fin stack → vertical airflow</dd><dt>Reward path</dt><dd>Pool share → app wallet</dd><dt>Payout</dt><dd>On-chain or Lightning, daily</dd></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- THERMAL -->
+<section id="thermal">
+  <div class="px" aria-hidden="true"><div class="glow" style="left:-30%;top:10%;opacity:.6" data-px="0.2"></div></div>
+  <div class="wrap">
+    <div class="sec-head" data-pxe="-0.05">
+      <div class="eyebrow">Thermal architecture</div>
+      <h2>Five layers between the silicon and your skin.</h2>
+      <p class="lede">The radiator is a pressed galvanised-steel shell around a vertical air channel. Two rows of six fans push intake air up across the hashboard stack and out through the top vent, so the room fills with warm air from the top down.</p>
+    </div>
+    <div class="exploded">
+      <svg viewBox="0 0 560 420" role="img" aria-label="Exploded view of the QuantumRad radiator showing front panel, fin array, hashboards, fan rows and rear bracket">
+        <defs>
+          <linearGradient id="steel" x1="0" x2="1"><stop offset="0" stop-color="#3a3a3f"/><stop offset="1" stop-color="#232326"/></linearGradient>
+          <linearGradient id="goldp" x1="0" x2="1"><stop offset="0" stop-color="#e8cc6c"/><stop offset="1" stop-color="#9b7c2f"/></linearGradient>
+          <pattern id="fins" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="3" height="10" fill="#4a4a50"/></pattern>
+        </defs>
+        <g transform="skewY(-14) translate(0 80)">
+          <!-- rear bracket -->
+          <g data-ex="4" transform="translate(360 40)">
+            <rect x="0" y="0" width="170" height="140" rx="3" fill="#1d1d20" stroke="#3c3c42"/>
+            <rect x="20" y="30" width="130" height="12" fill="#2d2d31"/><rect x="20" y="98" width="130" height="12" fill="#2d2d31"/>
+            <text x="0" y="-10" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">E · REAR BRACKET</text>
+          </g>
+          <!-- fans -->
+          <g data-ex="3" transform="translate(280 60)">
+            <rect x="0" y="0" width="170" height="140" rx="3" fill="#202023" stroke="#3c3c42"/>
+            <g fill="none" stroke="#c9a84c" stroke-width="1.5" opacity=".9">
+              <circle cx="22" cy="38" r="11"/><circle cx="50" cy="38" r="11"/><circle cx="78" cy="38" r="11"/><circle cx="106" cy="38" r="11"/><circle cx="134" cy="38" r="11"/><circle cx="162" cy="38" r="11" opacity=".4"/>
+              <circle cx="22" cy="102" r="11"/><circle cx="50" cy="102" r="11"/><circle cx="78" cy="102" r="11"/><circle cx="106" cy="102" r="11"/><circle cx="134" cy="102" r="11"/><circle cx="162" cy="102" r="11" opacity=".4"/>
+            </g>
+            <text x="0" y="-10" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">D · 2 × 6 FAN ROWS</text>
+          </g>
+          <!-- hashboards -->
+          <g data-ex="2" transform="translate(200 80)">
+            <rect x="0" y="0" width="170" height="140" rx="3" fill="#232326" stroke="#3c3c42"/>
+            <g fill="url(#goldp)">
+              <rect x="12" y="14" width="44" height="52" rx="2"/><rect x="63" y="14" width="44" height="52" rx="2"/><rect x="114" y="14" width="44" height="52" rx="2"/>
+              <rect x="12" y="76" width="44" height="52" rx="2"/><rect x="63" y="76" width="44" height="52" rx="2"/><rect x="114" y="76" width="44" height="52" rx="2"/>
+            </g>
+            <text x="0" y="-10" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">C · 6 HASHBOARDS</text>
+          </g>
+          <!-- fins -->
+          <g data-ex="1" transform="translate(120 100)">
+            <rect x="0" y="0" width="170" height="140" rx="3" fill="url(#fins)" stroke="#3c3c42"/>
+            <text x="0" y="-10" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">B · ALUMINIUM FIN STACK</text>
+          </g>
+          <!-- front -->
+          <g data-ex="0" transform="translate(40 120)">
+            <rect x="0" y="0" width="170" height="140" rx="3" fill="url(#steel)" stroke="#55555c"/>
+            <rect x="12" y="8" width="146" height="6" rx="2" fill="#141415"/>
+            <text x="0" y="-10" fill="#7f7c74" font-family="IBM Plex Mono" font-size="10">A · PRESSED STEEL FRONT</text>
+          </g>
+          <!-- airflow -->
+          <g fill="none" stroke="#e2663a" stroke-width="2" stroke-dasharray="4 5">
+            <path d="M125 275c0-60 0-120 0-170"/><path d="M165 275c0-60 0-120 0-170"/><path d="M205 275c0-60 0-120 0-170"/>
+          </g>
+          <text x="118" y="292" fill="#e2663a" font-family="IBM Plex Mono" font-size="10">INTAKE ↑ VERTICAL CHANNEL ↑ TOP VENT</text>
+        </g>
+      </svg>
+      <div class="layers">
+        <div class="layer"><span class="k">A</span><div><b>Pressed steel front</b><p>Galvanised sheet pressed as one piece, powder coated. Top slot is the only exit vent, so convection carries the air column upward.</p></div></div>
+        <div class="layer"><span class="k">B</span><div><b>Aluminium fin stack</b><p>Extruded fins bonded to the hashboard heatsinks spread the load so the front surface sits in the 48–68 °C band and never spikes.</p></div></div>
+        <div class="layer"><span class="k">C</span><div><b>Six hashboards</b><p>Three sets of two. The number of active boards is the primary heat control; fan speed is the secondary. Boards hot-swap through the rear service hatch.</p></div></div>
+        <div class="layer"><span class="k">D</span><div><b>Two rows of six fans</b><p>Moulded into the rear bracket. Row B pushes across the array, row A pulls up to the vent. 120 mm, fluid bearing, PWM.</p></div></div>
+        <div class="layer"><span class="k">E</span><div><b>Rear bracket and power cage</b><p>Wall-mount rail, PSU bay, Ethernet and mains entry. The air-compliant cage holds the boards 25 mm off the shell.</p></div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px" class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Heat mode</th><th>Active boards</th><th>Wall power</th><th>Hashrate</th><th>Front surface</th><th>Room output</th><th>Acoustic</th></tr></thead>
+        <tbody>
+          <tr><td><span class="mode eco"><i></i>ECO</span></td><td class="num">2 of 6</td><td class="num">400 W</td><td class="num">19 TH/s</td><td class="num">48 °C</td><td class="num">20–28 °C</td><td class="num">&lt; 28 dB(A)</td></tr>
+          <tr><td><span class="mode"><i></i>COMFORT</span></td><td class="num">4 of 6</td><td class="num">600 W</td><td class="num">28 TH/s</td><td class="num">58 °C</td><td class="num">28–38 °C</td><td class="num">&lt; 34 dB(A)</td></tr>
+          <tr><td><span class="mode max"><i></i>MAX</span></td><td class="num">6 of 6</td><td class="num">800 W</td><td class="num">38 TH/s</td><td class="num">68 °C</td><td class="num">38–48 °C</td><td class="num">&lt; 40 dB(A)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note" style="margin-top:12px">Room output is the air temperature at the top vent. Surface and acoustic figures are design targets measured at 20 °C ambient, 1 m. The thermostat modulates within a mode by trimming board clock, so power is continuous between 400 and 800 W.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- PLANS -->
+<section id="plans">
+  <div class="wrap">
+    <div class="sec-head" data-pxe="-0.05">
+      <div class="eyebrow">Plans and designs</div>
+      <h2>The original plan set.</h2>
+      <p class="lede">Dimensioned elevations, sections and renders from the 2022 design programme, with the desktop heater drawing from 2023. Click any sheet to open it at full size.</p>
+    </div>
+    <div class="gal" id="gal">
+      <figure class="wide"><img src="plans/plan-set-dimensioned.jpg" alt="Dimensioned plan set: top plan, front elevation, left and right elevations, bottom plan and rear elevation of the 890 by 420 millimetre radiator, with two axonometric views" loading="lazy"><figcaption>QuantumRad V1 · dimensioned plan set<span>890 × 420 mm</span></figcaption></figure>
+      <figure><img src="plans/plan-set-sections.jpg" alt="Plan set showing the fin pattern on the front elevation and the layered rear elevation" loading="lazy"><figcaption>V1 · fin pattern and rear layers<span>Sheet 2</span></figcaption></figure>
+      <figure><img src="plans/plan-elevations-v2.jpg" alt="Version 2 dimensions and plans with elevations and two shaded axonometric views" loading="lazy"><figcaption>V2 · dimensions and plans<span>Rev 2</span></figcaption></figure>
+      <figure class="wide"><img src="plans/plan-desktop-heater.jpg" alt="Diamond Desktop Heater drawing with front, side and plan views and callouts for the fans, shell, mesh intake, LED strip and power base" loading="lazy"><figcaption>Diamond Desktop Heater DDHv1 · callout sheet<span>932.8 × 572.8 × 161.3 mm</span></figcaption></figure>
+      <figure><img src="plans/render-fin-black.jpg" alt="Render of the black finned radiator on a white wall with a grey side unit" loading="lazy"><figcaption>Render · fin front, carbon<span>V1</span></figcaption></figure>
+      <figure><img src="plans/render-grey-set.jpg" alt="Render of the grey three-bar radiator with a side unit" loading="lazy"><figcaption>Render · three-bar front, graphite<span>V2</span></figcaption></figure>
+      <figure><img src="plans/render-white-panel.jpg" alt="Render of the plain white panel radiator" loading="lazy"><figcaption>Render · flat panel, bone<span>V2</span></figcaption></figure>
+      <figure><img src="plans/render-three-heat.jpg" alt="Render of the black finned radiator with the three-heat side unit" loading="lazy"><figcaption>Render · carbon with side unit<span>V1</span></figcaption></figure>
+      <figure><img src="plans/render-corner-detail.jpg" alt="Close render of the radiator corner showing the fin depth" loading="lazy"><figcaption>Render · corner and fin depth<span>Detail</span></figcaption></figure>
+      <figure><img src="plans/render-side-detail.jpg" alt="Close render of the radiator edge against a herringbone floor" loading="lazy"><figcaption>Render · edge profile<span>Detail</span></figcaption></figure>
+      <figure class="wide"><img src="plans/render-room-a.jpg" alt="Living room render with four radiator finishes mounted on one wall" loading="lazy"><figcaption>Render · finish range in a living room<span>Bone, white, graphite</span></figcaption></figure>
+      <figure><img src="plans/render-room-b.jpg" alt="Living room render with the dark finish range" loading="lazy"><figcaption>Render · dark finish range<span>Carbon, black, graphite</span></figcaption></figure>
+      <figure><img src="plans/render-model-1.jpg" alt="Render of the black finned radiator between two side units" loading="lazy"><figcaption>Model · fin front with side units<span>V1</span></figcaption></figure>
+      <figure><img src="plans/render-model-3.jpg" alt="Render of the white flat panel with a grey side unit" loading="lazy"><figcaption>Model · flat panel<span>V2</span></figcaption></figure>
+      <figure><img src="plans/render-model-5.jpg" alt="Render of the graphite three-bar radiator" loading="lazy"><figcaption>Model · three-bar front<span>V2</span></figcaption></figure>
+    </div>
+
+    <div class="sec-head" style="margin-top:72px" data-pxe="-0.05">
+      <div class="eyebrow">Derived plans · Rev A</div>
+      <h2>New drawings built from the plan set.</h2>
+      <p class="lede">Six sheets derived from the V1 dimensions, drawn for the ASIC configuration. Board bays follow the three-column layout of the original, so the die-cast family and the mounting hardware share parts with V1.</p>
+    </div>
+    <div class="draws">
+
+      <div class="dw"><div class="sheet">
+        <svg viewBox="0 0 520 300" font-family="IBM Plex Mono, Menlo, monospace" font-size="9" role="img" aria-label="Section A-A through the radiator showing wall, bracket, fan row, hashboards, fin stack and front panel with airflow from the bottom intake to the top vent">
+          <g fill="none" stroke="#2a2a2e" stroke-width="1.2">
+            <rect x="60" y="20" width="14" height="260" fill="#d9d5cc"/>
+            <rect x="74" y="60" width="26" height="180" fill="#bfbab0"/>
+            <rect x="100" y="40" width="30" height="220" fill="#e9e6df"/>
+            <rect x="130" y="40" width="32" height="220" fill="#c9a84c" fill-opacity=".55"/>
+            <rect x="162" y="40" width="40" height="220" fill="#8d8a84"/>
+            <rect x="202" y="30" width="10" height="240" fill="#55555c"/>
+          </g>
+          <g fill="none" stroke="#2a2a2e" stroke-width="1"><circle cx="115" cy="90" r="10"/><circle cx="115" cy="150" r="10"/><circle cx="115" cy="210" r="10"/></g>
+          <g fill="none" stroke="#e2663a" stroke-width="1.6" stroke-dasharray="4 4"><path d="M182 275V26"/><path d="M146 275V26"/><path d="M172 290 182 275l10 15"/><path d="M136 290l10-15 10 15"/></g>
+          <g fill="#e2663a"><path d="M182 20l-5 8h10z"/><path d="M146 20l-5 8h10z"/></g>
+          <g stroke="#2a2a2e" stroke-width=".8" fill="#2a2a2e">
+            <path d="M74 12v-6M100 12v-6M130 12v-6M162 12v-6M202 12v-6M212 12v-6M74 9h138" fill="none"/>
+            <text x="78" y="6">50</text><text x="110" y="6">30</text><text x="140" y="6">32</text><text x="176" y="6">40</text><text x="203" y="6">10</text>
+            <path d="M232 20h6M232 280h6M235 20v260" fill="none"/><text x="240" y="152">420</text>
+          </g>
+          <g fill="#2a2a2e">
+            <text x="300" y="50">A  WALL</text><text x="300" y="68">B  RAIL BRACKET · 50</text><text x="300" y="86">C  FAN ROW · 120 mm PWM</text><text x="300" y="104">D  HASHBOARD BAY · 6 × 6.4 TH/s</text><text x="300" y="122">E  ALUMINIUM FIN STACK</text><text x="300" y="140">F  PRESSED STEEL FRONT · 1.2 mm</text>
+            <text x="300" y="176" fill="#e2663a">INTAKE  bottom mesh, full width</text><text x="300" y="192" fill="#e2663a">EXIT    top slot, 30 × 860 mm</text>
+            <text x="300" y="226">OVERALL DEPTH  100 mm OFF WALL</text><text x="300" y="242">SECTION A-A · SCALE 1:5</text>
+            <text x="300" y="276" fill="#7f7c74">SAT-QR1-SEC-001 · REV A</text>
+          </g>
+        </svg>
+      </div><div class="meta"><div><b>Section A-A · vertical air channel</b><p>Layer depths taken from the V1 top plan (50 / 30 / 32 / 40). Shows intake, the board bay and the single top exit.</p></div><span class="rev">SEC-001 · Rev A</span></div></div>
+
+      <div class="dw"><div class="sheet">
+        <svg viewBox="0 0 520 300" font-family="IBM Plex Mono, Menlo, monospace" font-size="9" role="img" aria-label="Front elevations of the V2 die-cast family in two, four and eight board widths with derived dimensions">
+          <g fill="#e9e6df" stroke="#2a2a2e" stroke-width="1.2">
+            <rect x="20" y="60" width="80" height="84" rx="4"/>
+            <rect x="120" y="60" width="140" height="84" rx="4"/>
+            <rect x="280" y="60" width="226" height="84" rx="4"/>
+          </g>
+          <g fill="#c9a84c" fill-opacity=".45" stroke="#2a2a2e" stroke-width=".6">
+            <rect x="32" y="70" width="26" height="28"/><rect x="32" y="106" width="26" height="28"/>
+            <rect x="132" y="70" width="26" height="28"/><rect x="132" y="106" width="26" height="28"/><rect x="190" y="70" width="26" height="28"/><rect x="190" y="106" width="26" height="28"/>
+            <rect x="292" y="70" width="26" height="28"/><rect x="292" y="106" width="26" height="28"/><rect x="350" y="70" width="26" height="28"/><rect x="350" y="106" width="26" height="28"/><rect x="408" y="70" width="26" height="28"/><rect x="408" y="106" width="26" height="28"/><rect x="466" y="70" width="26" height="28"/><rect x="466" y="106" width="26" height="28"/>
+          </g>
+          <g stroke="#2a2a2e" stroke-width=".8" fill="#2a2a2e">
+            <path d="M20 160v6M100 160v6M20 163h80M120 160v6M260 160v6M120 163h140M280 160v6M506 160v6M280 163h226" fill="none"/>
+            <text x="48" y="178">400</text><text x="178" y="178">700</text><text x="380" y="178">1290</text>
+            <path d="M12 60h-6M12 144h-6M9 60v84" fill="none"/><text x="-2" y="106" transform="rotate(-90 4 106)">420</text>
+          </g>
+          <g fill="#2a2a2e"><text x="20" y="48">QR2-2 · 2 BOARDS</text><text x="120" y="48">QR2-4 · 4 BOARDS</text><text x="280" y="48">QR2-8 · 8 BOARDS</text></g>
+          <g fill="#2a2a2e"><text x="20" y="214">COLUMN PITCH 297 mm (890 ÷ 3)   SIDE MARGIN 50 mm   HEIGHT 420 mm (V1)</text><text x="20" y="232">W = 100 + 297 × n columns  →  400 / 700 / 1290 mm   DEPTH 100 mm</text><text x="20" y="250">POWER  135–270 W · 270–540 W · 540–1080 W   HASHRATE  13 · 26 · 51 TH/s</text><text x="20" y="282" fill="#7f7c74">SAT-QR2-ELE-002 · REV A · DERIVED FROM V1 PLAN SET</text></g>
+        </svg>
+      </div><div class="meta"><div><b>V2 die-cast family · front elevations</b><p>Widths derived from the V1 column pitch. One tooling family, three bay counts, shared fan and PSU modules.</p></div><span class="rev">ELE-002 · Rev A</span></div></div>
+
+      <div class="dw"><div class="sheet">
+        <svg viewBox="0 0 520 300" font-family="IBM Plex Mono, Menlo, monospace" font-size="9" role="img" aria-label="Wall rail and fixing detail with four fixing points, rail dimensions and the hook engagement">
+          <g fill="#bfbab0" stroke="#2a2a2e" stroke-width="1.2"><rect x="40" y="60" width="300" height="24"/><rect x="40" y="170" width="300" height="24"/></g>
+          <g fill="#2a2a2e"><circle cx="70" cy="72" r="4"/><circle cx="310" cy="72" r="4"/><circle cx="70" cy="182" r="4"/><circle cx="310" cy="182" r="4"/><circle cx="190" cy="72" r="4"/><circle cx="190" cy="182" r="4"/></g>
+          <g stroke="#2a2a2e" stroke-width=".8" fill="#2a2a2e">
+            <path d="M40 220v6M340 220v6M40 223h300M70 236v6M310 236v6M70 239h240" fill="none"/><text x="178" y="218">890 RAIL</text><text x="170" y="252">800 FIXING CENTRES</text>
+            <path d="M360 72h6M360 182h6M363 72v110" fill="none"/><text x="370" y="130">320</text>
+          </g>
+          <g transform="translate(410 40)">
+            <g fill="none" stroke="#2a2a2e" stroke-width="1.2"><rect x="0" y="0" width="12" height="150" fill="#d9d5cc"/><path d="M12 30h20v10h-14v30h14v10h-20z" fill="#bfbab0"/><path d="M32 20h14v8h-6v26h-8" fill="#8d8a84"/></g>
+            <text x="0" y="170">HOOK DETAIL 1:2</text>
+          </g>
+          <g fill="#2a2a2e"><text x="40" y="40">RAIL PAIR · 2 × 890 mm · 2 mm GALV. STEEL</text><text x="40" y="275">FIXINGS 6 × M8 SLEEVE ANCHOR (MASONRY) OR 6 × M6 TOGGLE (PLASTERBOARD)   TOP RAIL 1.0 m FROM FLOOR MIN</text><text x="40" y="290" fill="#7f7c74">SAT-QR1-MNT-003 · REV A</text></g>
+        </svg>
+      </div><div class="meta"><div><b>Wall rail and fixing detail</b><p>Two rails at 320 mm centres from the V1 side elevation. Six fixings, hook-on hang, anti-lift screw at each end.</p></div><span class="rev">MNT-003 · Rev A</span></div></div>
+
+      <div class="dw"><div class="sheet">
+        <svg viewBox="0 0 520 300" font-family="IBM Plex Mono, Menlo, monospace" font-size="9" role="img" aria-label="Installation clearance diagram showing minimum distances from floor, sides, ceiling and the socket position">
+          <rect x="20" y="20" width="480" height="250" fill="#f4f2ec" stroke="#2a2a2e" stroke-width="1.2"/>
+          <rect x="20" y="250" width="480" height="20" fill="#d9d5cc"/>
+          <rect x="170" y="120" width="180" height="85" rx="3" fill="#8d8a84" stroke="#2a2a2e"/>
+          <g fill="none" stroke="#c9a84c" stroke-width="1.4" stroke-dasharray="5 4"><rect x="140" y="50" width="240" height="185"/></g>
+          <g stroke="#2a2a2e" stroke-width=".8" fill="#2a2a2e">
+            <path d="M260 205v45" fill="none"/><text x="266" y="232">≥ 150</text>
+            <path d="M260 120V50" fill="none"/><text x="266" y="88">≥ 300 ABOVE VENT</text>
+            <path d="M170 160h-30M350 160h30" fill="none"/><text x="92" y="156">≥ 100</text><text x="382" y="156">≥ 100</text>
+            <path d="M350 120l60-60" fill="none"/><text x="414" y="56">NO CURTAINS OR SHELVES IN ZONE</text>
+          </g>
+          <g><rect x="440" y="200" width="18" height="18" fill="#fff" stroke="#2a2a2e"/><text x="404" y="238" fill="#2a2a2e">13 A SOCKET ≤ 1.5 m</text></g>
+          <g fill="#2a2a2e"><text x="28" y="36">INSTALLATION ZONE · 13 A PLUG-IN · NO HARDWIRE REQUIRED · IP20 INDOOR</text><text x="28" y="288" fill="#7f7c74">SAT-QR1-INS-004 · REV A</text></g>
+        </svg>
+      </div><div class="meta"><div><b>Installation clearances</b><p>Minimum clearances for the vertical air channel to work and for the room-heater standard. Plug-in, no electrician needed.</p></div><span class="rev">INS-004 · Rev A</span></div></div>
+
+      <div class="dw"><div class="sheet">
+        <svg viewBox="0 0 520 300" font-family="IBM Plex Mono, Menlo, monospace" font-size="9" role="img" aria-label="System block diagram: mains to RCD and PSU to a 12 volt bus feeding six hashboards, with the controller driving fans, reading sensors and connecting to the app over the network">
+          <g fill="#fff" stroke="#2a2a2e" stroke-width="1.1">
+            <rect x="20" y="40" width="70" height="30" rx="3"/><rect x="110" y="40" width="60" height="30" rx="3"/><rect x="190" y="40" width="90" height="30" rx="3"/>
+            <rect x="320" y="20" width="40" height="22"/><rect x="320" y="48" width="40" height="22"/><rect x="320" y="76" width="40" height="22"/><rect x="370" y="20" width="40" height="22"/><rect x="370" y="48" width="40" height="22"/><rect x="370" y="76" width="40" height="22"/>
+            <rect x="190" y="150" width="90" height="40" rx="3"/>
+            <rect x="20" y="150" width="70" height="30" rx="3"/><rect x="20" y="200" width="70" height="30" rx="3"/><rect x="110" y="200" width="60" height="30" rx="3"/>
+            <rect x="320" y="150" width="90" height="30" rx="3"/><rect x="430" y="150" width="70" height="30" rx="3"/><rect x="320" y="200" width="90" height="30" rx="3"/>
+          </g>
+          <g fill="none" stroke="#2a2a2e" stroke-width="1"><path d="M90 55h20M170 55h20M280 55h30M280 55v115M300 55v40M300 95h20M300 55v10M235 70v80M190 165h-100M90 215h20M170 215h20M190 215h0M280 170h40M280 160h150"/><path d="M365 165h5M365 215h-85"/></g>
+          <g fill="#2a2a2e">
+            <text x="26" y="59">MAINS 230 V</text><text x="118" y="59">RCD · FUSE</text><text x="198" y="59">PSU · PFC · 12 V</text>
+            <text x="322" y="34">HB1</text><text x="322" y="62">HB2</text><text x="322" y="90">HB3</text><text x="372" y="34">HB4</text><text x="372" y="62">HB5</text><text x="372" y="90">HB6</text>
+            <text x="420" y="60">12 V BUS · 70 A</text>
+            <text x="198" y="167">CONTROLLER</text><text x="198" y="181">ARM SoC · TPM</text>
+            <text x="26" y="169">12 × NTC</text><text x="26" y="219">CURRENT SENSE</text><text x="118" y="219">FAN PWM</text>
+            <text x="326" y="169">ETHERNET · Wi-Fi 6</text><text x="438" y="169">iOS APP</text><text x="326" y="219">STRATUM V2 POOL</text>
+            <text x="20" y="262">THERMAL FUSE 85 °C IN SERIES WITH PSU ENABLE · BOARD THROTTLE AT 95 °C DIE</text>
+            <text x="20" y="288" fill="#7f7c74">SAT-QR1-ELC-005 · REV A</text>
+          </g>
+        </svg>
+      </div><div class="meta"><div><b>System block diagram</b><p>Power, control and network paths. The thermostat loop runs on the controller; the pool link is the only outbound connection.</p></div><span class="rev">ELC-005 · Rev A</span></div></div>
+
+      <div class="dw"><div class="sheet">
+        <svg viewBox="0 0 520 300" font-family="IBM Plex Mono, Menlo, monospace" font-size="9" role="img" aria-label="Section through the Diamond Desktop Heater showing the faceted shell, single vertical hashboard, two fans, mesh intake and S-vent exit">
+          <g transform="translate(0 10) scale(.86)"><g fill="none" stroke="#2a2a2e" stroke-width="1.2">
+            <path d="M90 100 160 50h120l70 50-130 160z" fill="#e9e6df"/>
+            <path d="M90 100h260M160 50l-20 50 80 160M280 50l20 50-80 160"/>
+          </g>
+          <rect x="205" y="70" width="30" height="130" fill="#c9a84c" fill-opacity=".55" stroke="#2a2a2e"/>
+          <g fill="none" stroke="#2a2a2e"><circle cx="180" cy="135" r="12"/><circle cx="260" cy="135" r="12"/></g>
+          <path d="M200 236h40" stroke="#2a2a2e" stroke-dasharray="2 2"/>
+          <g fill="none" stroke="#e2663a" stroke-width="1.4" stroke-dasharray="4 4"><path d="M220 262V60"/><path d="M220 60c0-14 20-14 20-28"/></g>
+          <g stroke="#2a2a2e" stroke-width=".8" fill="#2a2a2e"><path d="M90 272v6M350 272v6M90 275h260" fill="none"/><text x="196" y="292">932.8</text><path d="M370 50h6M370 260h6M373 50v210" fill="none"/><text x="380" y="160">572.8</text></g></g>
+          <g fill="#2a2a2e"><text x="372" y="70">A  DIE-CAST SHELL · 2 PART</text><text x="372" y="88">B  HASHBOARD · 6.4 TH/s</text><text x="372" y="106">C  DUAL SYNCED FANS</text><text x="372" y="124">D  MESH INTAKE</text><text x="372" y="142">E  S-VENT EXIT</text><text x="372" y="160">F  LED MODE STRIP</text><text x="372" y="178">G  BASE · 425 × 50 mm</text><text x="372" y="214">135 W · TIP-OVER CUT-OUT</text><text x="372" y="288" fill="#7f7c74">SAT-DDH-SEC-006 · REV A</text></g>
+        </svg>
+      </div><div class="meta"><div><b>Diamond Desktop · section</b><p>Single board stood vertically in the faceted shell from the DDHv1 sheet, with the fan pair and S-vent shown in section.</p></div><span class="rev">SEC-006 · Rev A</span></div></div>
+
+    </div>
+  </div>
+</section>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged drawing"><button type="button" id="lb-x">Close ✕</button><img id="lb-img" alt=""><div class="cap" id="lb-cap"></div></div>
+<div class="am" id="app-modal" role="dialog" aria-modal="true" aria-label="Satostat app demo" hidden>
+  <span class="am-edge" id="am-edge-start" tabindex="0"></span>
+  <div class="am-bar"><a href="app/index.html?demo=1" target="_blank" rel="noopener" id="am-full">Open full screen</a><button type="button" id="am-x">Close ✕</button></div>
+  <div class="am-fit" id="am-fit"><div class="am-phone" id="am-phone"><div class="am-screen"><iframe id="am-frame" title="Satostat app, live demo" src="about:blank"></iframe></div></div></div>
+  <span class="am-edge" id="am-edge-end" tabindex="0"></span>
+</div>
+
+<hr class="rule">
+
+<!-- ENGINE -->
+<section id="engine">
+  <div class="wrap">
+    <div class="sec-head" data-pxe="-0.05">
+      <div class="eyebrow">Mining engine</div>
+      <h2>A proper miner, not a novelty.</h2>
+      <p class="lede">The hashboards, firmware and network stack are what you would expect in a data-centre unit, scaled to a room and tuned for quiet, consistent heat instead of peak hashrate.</p>
+    </div>
+    <div class="specs">
+      <div class="spec">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>Hashboards</h3>
+        <ul>
+          <li><span>Algorithm</span><b>SHA-256d (Bitcoin)</b></li>
+          <li><span>ASIC process</span><b>5 nm</b></li>
+          <li><span>Chips per board</span><b>12</b></li>
+          <li><span>Board hashrate</span><b>6.4 TH/s</b></li>
+          <li><span>Efficiency, wall</span><b>≈ 21 J/TH</b></li>
+          <li><span>Clock range</span><b>Underclock 40–100 %</b></li>
+          <li><span>Die temp limit</span><b>95 °C, auto throttle</b></li>
+          <li><span>Service</span><b>Rear hatch, tool-free</b></li>
+        </ul>
+      </div>
+      <div class="spec">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="2"/></svg>Firmware</h3>
+        <ul>
+          <li><span>Protocol</span><b>Stratum V2, V1 fallback</b></li>
+          <li><span>Pool</span><b>Any, 3 with failover</b></li>
+          <li><span>Solo mode</span><b>Own node via RPC</b></li>
+          <li><span>Updates</span><b>Signed OTA, A/B slots</b></li>
+          <li><span>Thermostat</span><b>PID on room sensor</b></li>
+          <li><span>Scheduling</span><b>7-day, tariff aware</b></li>
+          <li><span>Local API</span><b>REST + MQTT, LAN only</b></li>
+          <li><span>Logs</span><b>On-device, exportable</b></li>
+        </ul>
+      </div>
+      <div class="spec">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 9a14 14 0 0 1 20 0M5.5 12.5a9 9 0 0 1 13 0M9 16a4 4 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1"/></svg>Control &amp; connectivity</h3>
+        <ul>
+          <li><span>Controller</span><b>Quad-core ARM SoC</b></li>
+          <li><span>Wi-Fi</span><b>Wi-Fi 6, 2.4 / 5 GHz</b></li>
+          <li><span>Wired</span><b>Gigabit Ethernet</b></li>
+          <li><span>Local radio</span><b>Thread + BLE for setup</b></li>
+          <li><span>Sensors</span><b>12 × NTC, inlet/outlet, current</b></li>
+          <li><span>On-unit control</span><b>Capacitive mode + dial</b></li>
+          <li><span>Multi-unit</span><b>Up to 16 per home</b></li>
+          <li><span>Security</span><b>Secure boot, TPM key store</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid g4" style="margin-top:20px">
+      <div class="card"><h3>Safety cut-outs</h3><p>Independent thermal fuse on the front panel at 85 °C, board over-temp throttling at 95 °C die, over-current and earth-leakage protection in the PSU bay.</p></div>
+      <div class="card"><h3>Surface compliance</h3><p>Designed to the room-heater surface temperature limits in IEC 60335-2-30. Front panel stays below the metal-surface threshold at every mode.</p></div>
+      <div class="card"><h3>Certification targets</h3><p>UKCA and CE marking, EN 55032 / 55035 EMC, RoHS and WEEE. Pilot units ship under a test-and-evaluation programme before full certification.</p></div>
+      <div class="card"><h3>Privacy</h3><p>Telemetry stays on the unit and in your app. Pool credentials and payout addresses are stored in the TPM; nothing is pooled through Satostat servers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section id="app" class="app">
+  <div class="px" aria-hidden="true"><div class="gridlines" data-px="0.08" style="opacity:.2"></div></div>
+  <div class="wrap">
+    <div class="sec-head" data-pxe="-0.05">
+      <div class="eyebrow">Satostat for iOS</div>
+      <h2>Thermostat and wallet in one app.</h2>
+      <p class="lede">Set the room temperature, choose how hard the radiator works, and watch the rewards arrive. The app is the controller, the earnings ledger and the payout wallet, and it works over your LAN when the internet is down.</p>
+      <div class="app-cta"><a class="store" href="#waitlist"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.2zM13.9 4.9c.7-.9 1.2-2.1 1.1-3.3-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.2 1.1.1 2.3-.6 3-1.5z"/></svg><span><small>Coming to the</small><b>App Store</b></span></a><button type="button" class="btn" id="try-app" aria-haspopup="dialog" aria-controls="app-modal">Try the app</button></div>
+    </div>
+
+    <div class="phones">
+      <div data-pxe="0.07">
+        <div class="phone"><div class="screen live">
+          <iframe src="app/index.html?demo=1&amp;embed=1&amp;tab=home" title="Satostat app, live demo: Earnings" loading="lazy" scrolling="no" data-tab="home"></iframe>
+        </div></div>
+        <div class="caption">Earnings</div>
+      </div>
+      <div data-pxe="-0.05">
+        <div class="phone"><div class="screen live">
+          <iframe src="app/index.html?demo=1&amp;embed=1&amp;tab=heat" title="Satostat app, live demo: Heating" loading="lazy" scrolling="no" data-tab="heat"></iframe>
+        </div></div>
+        <div class="caption">Heating</div>
+      </div>
+      <div data-pxe="0.09">
+        <div class="phone"><div class="screen live">
+          <iframe src="app/index.html?demo=1&amp;embed=1&amp;tab=wallet" title="Satostat app, live demo: Wallet" loading="lazy" scrolling="no" data-tab="wallet"></iframe>
+        </div></div>
+        <div class="caption">Wallet</div>
+      </div>
+    </div>
+    <p class="app-hint" data-pxe="-0.05" data-pxe-follow="#app .phones > div">The phones above are live. Try them.</p>
+
+    <div class="feat">
+      <div><b>Heat first, hash second</b><p>The thermostat always wins. Set a room target and the radiator picks the lowest mode that holds it, then steps up when the room asks for more.</p></div>
+      <div><b>Tariff aware</b><p>Import an agile or time-of-use tariff and the schedule shifts MAX mode into the cheapest half-hours, pre-heating the room before peak pricing.</p></div>
+      <div><b>Your keys, your sats</b><p>Payout addresses are generated on your phone. Lightning for small daily payouts, on-chain for larger sweeps. Export a CSV for your records at any time.</p></div>
+      <div><b>Whole-home view</b><p>Group up to sixteen units by room. One screen shows total draw, total hashrate and per-room temperature with history.</p></div>
+      <div><b>Works offline</b><p>Control over the LAN with no cloud dependency. If the internet drops the unit keeps heating as a plain electric radiator until the pool reconnects.</p></div>
+      <div><b>Widgets and Siri</b><p>Lock-screen widgets for sats today and room temperature. Shortcuts for mode changes, so "set the living room to Eco" works from your wrist.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ECONOMICS -->
+<section id="economics">
+  <div class="px" aria-hidden="true"><div class="glow" style="right:-25%;top:30%;opacity:.5" data-px="0.18"></div></div>
+  <div class="wrap">
+    <div class="sec-head" data-pxe="-0.05">
+      <div class="eyebrow">Economics</div>
+      <h2>What the warmth costs after rewards.</h2>
+      <p class="lede">A conventional electric radiator turns every kilowatt-hour into heat and nothing else. QuantumRad turns the same kilowatt-hour into heat plus a share of block rewards. Change the assumptions and see the net cost move.</p>
+    </div>
+    <div class="calc">
+      <form class="form" id="calc" onsubmit="return false">
+        <div class="field">
+          <label for="mode">Heat mode</label>
+          <select id="mode">
+            <option value="400">ECO · 400 W · 19 TH/s</option>
+            <option value="600">COMFORT · 600 W · 28 TH/s</option>
+            <option value="800" selected>MAX · 800 W · 38 TH/s</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="hours">Hours heating per day <output id="hours-o">8</output></label>
+          <input type="range" id="hours" min="1" max="24" step="1" value="8">
+        </div>
+        <div class="field">
+          <label for="tariff">Electricity price, £ per kWh</label>
+          <input type="number" id="tariff" value="0.25" step="0.01" min="0.01" max="5">
+        </div>
+        <div class="field">
+          <label for="btc">Bitcoin price, £</label>
+          <input type="number" id="btc" value="70000" step="500" min="1" max="100000000">
+        </div>
+        <div class="field">
+          <label for="net">Network hashrate, EH/s</label>
+          <input type="number" id="net" value="900" step="10" min="100" max="100000">
+        </div>
+        <div class="field">
+          <label for="fee">Pool fee, %</label>
+          <input type="number" id="fee" value="1" step="0.1" min="0" max="10">
+        </div>
+      </form>
+      <div class="results">
+        <div class="res-tiles">
+          <div class="res"><small>Electricity per day</small><b id="r-cost">£1.60</b></div>
+          <div class="res"><small>Rewards per day</small><b id="r-rev">£0.44</b><span class="mono" id="r-sats" style="display:block;font-size:.72rem;color:var(--muted);margin-top:4px">627 sats</span></div>
+          <div class="res hi"><small>Net heating cost per day</small><b id="r-net">£1.16</b></div>
+        </div>
+        <div class="chart">
+          <h4>Daily cost of the same heat · £</h4>
+          <svg viewBox="0 0 520 150" id="bars" role="img" aria-label="Bar chart comparing daily cost of a conventional electric radiator with the net cost of QuantumRad after mining rewards">
+            <g font-family="IBM Plex Mono" font-size="11">
+              <text x="0" y="36" fill="#b9b5aa">Conventional radiator</text>
+              <rect id="b1" x="170" y="22" width="300" height="20" rx="4" fill="#6b6b72"/>
+              <text id="l1" x="476" y="36" fill="#f1ede3">£1.60</text>
+              <text x="0" y="86" fill="#b9b5aa">QuantumRad, net</text>
+              <rect id="b2" x="170" y="72" width="217" height="20" rx="4" fill="#c9a84c"/>
+              <text id="l2" x="393" y="86" fill="#f1ede3">£1.16</text>
+              <line x1="170" y1="10" x2="170" y2="105" stroke="#3c3c42"/>
+              <text id="sav" x="170" y="132" fill="#e8cc6c">Heating cost offset: 27 %</text>
+            </g>
+          </svg>
+          <div class="legend"><span><i style="background:#6b6b72"></i>Electricity only</span><span><i style="background:#c9a84c"></i>Electricity minus rewards</span></div>
+        </div>
+        <p class="note">Rewards are estimated as your share of network hashrate × 144 blocks × 3.125 BTC subsidy, less pool fee, and exclude transaction fees. Mining income varies with price, difficulty and uptime and is not guaranteed. Electricity, hardware wear and tax are yours to account for. Defaults are placeholders for you to change, not forecasts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- RANGE -->
+<section id="range">
+  <div class="wrap">
+    <div class="sec-head" data-pxe="-0.05">
+      <div class="eyebrow">Product range</div>
+      <h2>Three form factors. One engine.</h2>
+      <p class="lede">The same hashboard, controller and app across a wall radiator, a die-cast family in three sizes and a desktop unit. Everything is serviceable and every board is interchangeable.</p>
+    </div>
+    <div class="range">
+      <div class="prod">
+        <div class="draw">
+          <svg viewBox="0 0 320 190" aria-label="Line drawing of the QuantumRad V1 wall radiator, 890 by 420 millimetres">
+            <g fill="none" stroke="#c9a84c" stroke-width="1.5">
+              <rect x="30" y="40" width="240" height="110" rx="3"/>
+              <path d="M30 40l12-10h240l-12 10M270 40l12-10v110l-12 10" opacity=".6"/>
+              <path d="M44 48h212" stroke-dasharray="3 4" opacity=".7"/>
+            </g>
+            <g stroke="#7f7c74" stroke-width="1" font-family="IBM Plex Mono" font-size="10" fill="#7f7c74">
+              <path d="M30 165v8M270 165v8M30 170h240"/><text x="138" y="184">890 mm</text>
+              <path d="M14 40h8M14 150h8M18 40v110"/><text x="-6" y="98" transform="rotate(-90 4 98)">420</text>
+            </g>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>QuantumRad V1 <small>wall · 6 boards</small></h3>
+          <p>The launch unit. Pressed galvanised-steel shell, six hashboards, two fan rows, wall rail mount. The first production radiator and the reference platform for the app.</p>
+          <ul><li>890 × 420 × 100 mm, 14.5 kg</li><li>400–800 W, 19–38 TH/s</li><li>Powder coat: carbon, bone, gold</li></ul>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="draw">
+          <svg viewBox="0 0 320 190" aria-label="Line drawing of the QuantumRad V2 die-cast family in three widths">
+            <g fill="none" stroke="#c9a84c" stroke-width="1.5">
+              <rect x="20" y="60" width="70" height="90" rx="6"/>
+              <rect x="105" y="45" width="100" height="105" rx="6"/>
+              <rect x="220" y="30" width="80" height="120" rx="6" opacity=".55"/>
+              <g opacity=".6" stroke-dasharray="2 4"><path d="M28 70v70M40 70v70M52 70v70M64 70v70M76 70v70M113 55v85M128 55v85M143 55v85M158 55v85M173 55v85M188 55v85"/></g>
+            </g>
+            <g font-family="IBM Plex Mono" font-size="10" fill="#7f7c74"><text x="34" y="170">2 BRD</text><text x="135" y="170">4 BRD</text><text x="240" y="170">8 BRD</text></g>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>QuantumRad V2 <small>die-cast · 2 / 4 / 8 boards</small></h3>
+          <p>A die-cast three-layer shell with sculpted fins, offered in a small two-board unit for bedrooms, a four-board standard and an eight-board unit for open-plan and commercial rooms.</p>
+          <ul><li>135 W to 1.1 kW across the range</li><li>Flush wall or freestanding feet</li><li>Shared boards and PSU modules with V1</li></ul>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="draw">
+          <svg viewBox="0 0 320 214" aria-label="Line drawing of the Diamond Desktop Heater, a faceted die-cast unit with a mesh intake underneath">
+            <g fill="none" stroke="#c9a84c" stroke-width="1.5">
+              <path d="M60 70 110 30h100l50 40-100 120z"/>
+              <path d="M60 70h200M110 30l-20 40 70 120M210 30l20 40-70 120M85 70l75-40 75 40"/>
+              <path d="M140 50l20-20 20 20" opacity=".6"/>
+            </g>
+            <g stroke="#7f7c74" stroke-width="1" font-family="IBM Plex Mono" font-size="10" fill="#7f7c74">
+              <path d="M60 191v6M260 191v6M60 194h200"/><text x="136" y="209">933 mm</text>
+              <path d="M284 30h6M284 150h6M287 30v120"/><text x="292" y="96">573</text>
+            </g>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Diamond Desktop <small>DDHv1 · 1 board</small></h3>
+          <p>A faceted two-part die-cast shell over a single hashboard, mesh intake below, dual synced fans and an S-vent that throws warm air across a desk. A lit strip along the base shows mode.</p>
+          <ul><li>932.8 × 572.8 × 161.3 mm</li><li>135 W, 6.4 TH/s, under 25 dB(A)</li><li>Painted any finish, tip-over cut-out</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDING -->
+<section id="funding" class="fund">
+  <div class="px" aria-hidden="true"><div class="glow" style="left:-20%;bottom:-30%;opacity:.5" data-px="0.15"></div></div>
+  <div class="wrap">
+    <div class="sec-head" data-pxe="-0.05">
+      <div class="eyebrow">Government funding</div>
+      <h2>Satostat is working on government funding.</h2>
+      <p class="lede">Fuel poverty and heat decarbonisation are the two problems UK public money is already pointed at. Satostat is mapping its pilot programme against those schemes so that housing providers can deploy units with grant support rather than capital. No award has been made yet; this is the route we are working.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="tbl tbl-stack">
+        <thead><tr><th>Programme</th><th>What it funds</th><th>Fit for Satostat</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Warm Homes Plan</td><td>Public commitment of around £15 billion to 2030 to cut bills, reduce fuel poverty and move homes to clean, affordable heating.</td><td>The umbrella programme. Fully electric heating with a bill offset sits inside its goals.</td><td><span class="chip map"><i></i>Mapping</span></td></tr>
+          <tr><td>Warm Homes: Social Housing Fund</td><td>Grants to social landlords for energy upgrades in tenants' homes. Successor to the Social Housing Decarbonisation Fund.</td><td>Primary route. A housing-association pilot block applies with Satostat as the technology partner.</td><td><span class="chip prep"><i></i>Preparing partner pack</span></td></tr>
+          <tr><td>Warm Homes: Local Grant</td><td>Local-authority delivered upgrades for lower-income households, running to 2027/28.</td><td>Private-rented and owner-occupied homes in fuel poverty, delivered through a council scheme.</td><td><span class="chip map"><i></i>Mapping</span></td></tr>
+          <tr><td>DESNZ heat innovation competitions</td><td>Innovation funding rounds for low-carbon heat technologies and installation at scale.</td><td>Monitored field trial: measured heat output, energy use and household earnings across the pilot.</td><td><span class="chip prep"><i></i>Application drafting</span></td></tr>
+          <tr><td>Innovate UK Smart Grants</td><td>R&amp;D grants for game-changing, commercially viable innovation from UK businesses.</td><td>ASIC hashboard-to-radiator integration, thermostat firmware and the surface-temperature compliance work.</td><td><span class="chip map"><i></i>Mapping</span></td></tr>
+          <tr><td>R&amp;D tax relief and Patent Box</td><td>Tax relief on qualifying R&amp;D spend; reduced corporation tax on profits from patented inventions.</td><td>Applies to the patented radiator design and the development programme from EVT onward.</td><td><span class="chip part"><i></i>In scope</span></td></tr>
+          <tr><td>Local-authority fuel-poverty pilots</td><td>Council and devolved programmes trialling new ways to lower heating costs for vulnerable households.</td><td>Small monitored deployments that produce the evidence the national schemes ask for.</td><td><span class="chip prep"><i></i>Approaching councils</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fund-grid">
+      <div class="card">
+        <h3>Why public funders should care</h3>
+        <ol>
+          <li>Heat that pays a rebate directly to the household, with no means test or voucher process.</li>
+          <li>Fully electric. Every unit installed is a gas appliance not installed.</li>
+          <li>Every unit reports its own energy use and heat delivered, so outcomes are measured, not estimated.</li>
+          <li>Plug-in installation. No boiler removal, no wet system, no electrician visit.</li>
+          <li>UK-designed, with a patented design and a UK assembly plan.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>What we are asking for</h3>
+        <ol>
+          <li>One housing provider to host a monitored pilot of 20 to 50 units for one heating season.</li>
+          <li>Grant support for the units and the metering, matched by Satostat's development spend.</li>
+          <li>Independent measurement of heat output, electricity use and household earnings.</li>
+          <li>A published report that the national schemes can use to judge the technology.</li>
+        </ol>
+        <p class="note" style="margin-top:14px">Funding names and figures reflect public announcements as of 2026 and are summarised here, not quoted. Check the official programme pages before relying on them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="tight">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:28px">
+      <div class="eyebrow">Programme</div>
+      <h2>From prototype to pilot homes.</h2>
+    </div>
+    <div class="road">
+      <div class="ph"><span class="k">Phase 1</span><b>Prototype</b><p>Bench unit with six boards, pressed shell and the patent-described airflow channel. Thermal and acoustic characterisation.</p><span class="tag state"><i></i>Complete</span></div>
+      <div class="ph"><span class="k">Phase 2</span><b>EVT</b><p>Engineering validation: production hashboards, Titanium PSU, controller board, first firmware with Stratum V2 and PID thermostat.</p><span class="tag state"><i style="background:var(--warn)"></i>In progress</span></div>
+      <div class="ph"><span class="k">Phase 3</span><b>DVT + app beta</b><p>Design validation, surface-temperature and EMC pre-compliance. TestFlight beta of the iOS app with wallet and scheduling.</p><span class="tag state"><i style="background:var(--muted)"></i>Next</span></div>
+      <div class="ph"><span class="k">Phase 4</span><b>Pilot</b><p>Pilot units in homes and a housing-association block under a test-and-evaluation programme, with monitored energy and earnings data. Grant-supported where the funding route above lands.</p><span class="tag state"><i style="background:var(--muted)"></i>Planned</span></div>
+      <div class="ph"><span class="k">Phase 5</span><b>Production</b><p>Certified units, die-cast V2 line and desktop unit. App Store release and multi-unit home management.</p><span class="tag state"><i style="background:var(--muted)"></i>Planned</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="tight">
+  <div class="wrap" style="max-width:860px">
+    <div class="sec-head" style="margin-bottom:12px">
+      <div class="eyebrow">FAQ</div>
+      <h2>Straight answers.</h2>
+    </div>
+    <details open><summary>Is it as warm as a normal electric radiator?</summary><p>Yes, watt for watt. All electrical resistance heaters and all mining ASICs convert electricity to heat at effectively 100 %. An 800 W QuantumRad puts the same heat into the room as an 800 W panel heater. The difference is the vertical airflow design, which fills the room from the top faster than a passive panel.</p></details>
+    <details><summary>Will it pay for my heating?</summary><p>It offsets part of it. The calculator above uses your own assumptions. With typical UK tariffs and current network difficulty the rewards cover a portion of the electricity, not all of it. Treat the rewards as a discount on heat you were going to buy anyway, not as an income.</p></details>
+    <details><summary>How loud is it?</summary><p>The fans are 120 mm fluid-bearing units run at low RPM because the air channel is tall and the fin stack is large. Design targets are under 28 dB(A) in ECO and under 40 dB(A) in MAX at one metre, which is quieter than a fridge.</p></details>
+    <details><summary>Do I need to understand Bitcoin?</summary><p>No. The app sets up a wallet on your phone, picks a pool and starts hashing when the room needs heat. If you already run a node or prefer a specific pool you can point the unit at it in settings.</p></details>
+    <details><summary>Does it need the internet to heat?</summary><p>No. Without a connection it behaves as a plain electric radiator and follows its last schedule. Mining resumes when the connection returns.</p></details>
+    <details><summary>Who holds the Bitcoin?</summary><p>You do. Payout addresses are generated on your phone and written to the unit's secure element. Satostat never custodies funds and cannot see your balance.</p></details>
+    <details><summary>What about summer?</summary><p>Set the thermostat to a summer target and the unit idles, or switch it off entirely. Mining only runs when the room wants heat; there is no mode that heats a room you did not ask to heat.</p></details>
+    <details><summary>Can it be installed in social housing or commercial space?</summary><p>That is the pilot programme. The unit mounts on a standard rail, plugs into a 13 A socket and reports energy use per room, which makes it straightforward for housing providers to monitor.</p></details>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section id="waitlist" class="wait">
+  <div class="px" aria-hidden="true"><div class="glow" style="left:30%;bottom:-40%;opacity:.7" data-px="0.15"></div></div>
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:0">
+      <div class="eyebrow">Waitlist</div>
+      <h2>Reserve a place in the pilot.</h2>
+      <p class="lede">Pilot units go to homes and housing providers first. Leave an address and we will send the specification sheet and pilot terms when the EVT phase closes.</p>
+    </div>
+    <form id="wl" novalidate>
+      <input type="email" id="wl-email" placeholder="Email address" aria-label="Email address" required>
+      <select id="wl-type" aria-label="I am interested as">
+        <option value="home">Homeowner or tenant</option>
+        <option value="housing">Housing association</option>
+        <option value="commercial">Commercial property</option>
+        <option value="installer">Installer or electrician</option>
+        <option value="press">Press or research</option>
+      </select>
+      <button class="btn" type="submit">Request pilot info</button>
+    </form>
+    <div class="ok" id="wl-ok" aria-live="polite"></div>
+    <p class="note" style="margin-top:14px">Nothing is sent from this page yet. Entries are kept on your device until the waitlist service is connected.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="font-size:1rem"><svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true"><path d="M9.15 38.85A21 21 0 1 1 38.85 38.85" fill="none" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/><g stroke="#c9a84c" stroke-width="1.6" stroke-linecap="round"><path d="M3.5 24h3M24 3.5v3M44.5 24h-3M9.5 9.5l2.1 2.1M38.5 9.5l-2.1 2.1"/></g><g transform="skewX(-10)"><rect x="16" y="12" width="20" height="25" rx="5" fill="#b8953c"/><rect x="16" y="12" width="20" height="4" rx="2" fill="#c9a84c"/><g stroke="#141415" stroke-width="1.3" opacity=".6"><path d="M18 20h16M18 25.5h16M18 31h16"/></g></g><path d="M28.6 8 20.4 25h5.2L18.6 40.5 32.2 21.5h-6z" fill="#141415"/><path d="M29.4 8 21.2 25h5.2L19.4 40.5 33 21.5h-6z" fill="#f3dd86"/></svg> Satostat</div>
+      <p style="margin-top:10px">Satostat. Registered in England and Wales. QuantumRad, Diamond Desktop, the Satostat panel-bolt mark and “Proof of heat” are trade marks.</p>
+    </div>
+    <div>
+      <p>All figures on this page are design targets for pre-production hardware and may change before certification. Mining rewards depend on Bitcoin price, network difficulty, pool fees and uptime and are not guaranteed. Nothing here is financial advice.</p>
+      <p style="margin-top:10px" class="mono">hello@satostat.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Parallax engine: decor layers move with their section, content layers move
+  // against the viewport centre, the hero drifts with the pointer, the exploded
+  // radiator spreads its layers as it crosses the screen, and cards reveal on entry.
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $$ = function(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); };
+
+  // Section numerals behind each headline section.
+  $$('main section[id]').forEach(function(sec, i){
+    var px = sec.querySelector(':scope > .px');
+    if(!px){ px = document.createElement('div'); px.className = 'px'; px.setAttribute('aria-hidden','true'); sec.insertBefore(px, sec.firstChild); }
+    var n = document.createElement('div'); n.className = 'bignum'; n.textContent = (i < 9 ? '0' : '') + (i + 1);
+    n.setAttribute('data-px', '0.32'); px.appendChild(n);
+  });
+
+  // Gallery sheets at three depths.
+  $$('#gal figure').forEach(function(f, i){ f.setAttribute('data-pxe', ['0.06','-0.045','0.035'][i % 3]); });
+
+  var decor = $$('[data-px]'), content = $$('[data-pxe]'), exg = $$('.exploded svg g[data-ex]'), exploded = document.querySelector('.exploded svg');
+  content.forEach(function(el){ el.classList.add('pxe'); });
+  var mouse = $$('[data-mx]');
+  var hero = document.querySelector('.hero');
+  var mx = 0, my = 0, tmx = 0, tmy = 0, vh = window.innerHeight, narrow = window.innerWidth < 760;
+  var tops = [];
+  function docTop(el){ var y = 0; while(el){ y += el.offsetTop; el = el.offsetParent; } return y; }
+  function measure(){
+    vh = window.innerHeight; narrow = window.innerWidth < 760;
+    tops = content.map(function(el){
+      var src = el, f = parseFloat(el.getAttribute('data-pxe'));
+      // data-pxe-follow: move exactly as the column directly above moves, so the two never run into each other.
+      var follow = el.getAttribute('data-pxe-follow');
+      if(follow){
+        var hr = el.getBoundingClientRect(), x = hr.left + hr.width / 2, best = null, bestTop = -Infinity;
+        $$(follow).forEach(function(col){ var t = docTop(col), r = col.getBoundingClientRect(); if(x >= r.left && x <= r.right && t < docTop(el) && t > bestTop){ best = col; bestTop = t; } });
+        if(best){ src = best; f = parseFloat(best.getAttribute('data-pxe')); }
+      }
+      return {el: el, c: docTop(src) + src.offsetHeight / 2, f: f};
+    });
+    exg.forEach(function(g){ if(!g._b){ var m = /translate\(([-\d.]+)[ ,]+([-\d.]+)\)/.exec(g.getAttribute('transform') || ''); g._b = m ? [parseFloat(m[1]), parseFloat(m[2])] : [0,0]; g._i = parseInt(g.getAttribute('data-ex'), 10); } });
+    if(exploded){ var exBox = exploded.closest('.exploded') || exploded.parentNode; exploded._c = docTop(exBox) + exBox.offsetHeight / 2; }
+  }
+  function frame(){
+    if(reduce) return;
+    var y = window.scrollY || 0, mid = y + vh / 2;
+    for(var i = 0; i < decor.length; i++){
+      var el = decor[i], sec = el.closest('section'), top = sec ? sec.offsetTop : 0;
+      var d = (y - top) * parseFloat(el.getAttribute('data-px'));
+      var k = parseFloat(el.getAttribute('data-mx') || '0');
+      el.style.transform = 'translate3d(' + (mx * k).toFixed(1) + 'px,' + (d + my * k * .6).toFixed(1) + 'px,0)';
+    }
+    for(var j = 0; j < tops.length; j++){
+      var t = tops[j];
+      if(narrow){ t.el.style.transform = ''; continue; }
+      var dist = t.c - mid; if(dist > vh * 1.5 || dist < -vh * 1.5) continue;
+      var km = parseFloat(t.el.getAttribute('data-mx') || '0');
+      t.el.style.transform = 'translate3d(' + (mx * km).toFixed(1) + 'px,' + (dist * t.f + my * km * .6).toFixed(1) + 'px,0)';
+    }
+    if(exploded && exg.length){
+      var p = Math.max(-1, Math.min(1, (mid - exploded._c) / (vh * .6)));
+      var spread = narrow ? 0 : 22 * p;
+      exg.forEach(function(g){ g.style.transform = 'translate(' + g._b[0] + 'px,' + (g._b[1] + (g._i - 2) * spread) + 'px)'; });
+    }
+  }
+  var raf = 0, idle = 0;
+  function tick(){
+    raf = 0;
+    mx += (tmx - mx) * .08; my += (tmy - my) * .08;
+    frame();
+    if(Math.abs(tmx - mx) > .002 || Math.abs(tmy - my) > .002){ raf = requestAnimationFrame(tick); }
+  }
+  function req(){ if(!raf) raf = requestAnimationFrame(tick); }
+  if(hero){
+    hero.addEventListener('pointermove', function(e){
+      if(narrow || e.pointerType === 'touch') return;
+      var r = hero.getBoundingClientRect();
+      tmx = ((e.clientX - r.left) / r.width - .5) * 2; tmy = ((e.clientY - r.top) / r.height - .5) * 2; req();
+    });
+    hero.addEventListener('pointerleave', function(){ tmx = 0; tmy = 0; req(); });
+  }
+  window.addEventListener('scroll', req, {passive:true});
+  window.addEventListener('resize', function(){ measure(); req(); });
+  window.addEventListener('load', function(){ measure(); req(); });
+  if('ResizeObserver' in window){ new ResizeObserver(function(){ measure(); req(); }).observe(document.body); }
+  measure(); frame();
+
+  // Reveal on entry, staggered inside each parent.
+  var rvEls = $$('.card, .tl, .layer, .dw, .ph, .feat > div, .range > *, .model > *, .res-tiles > *, .fund-grid > *, .market > *, .stat');
+  rvEls.forEach(function(el){
+    el.classList.add('rv');
+    var kids = el.parentNode ? Array.prototype.slice.call(el.parentNode.children) : [];
+    el.style.transitionDelay = ((kids.indexOf(el) % 6) * 70) + 'ms';
+  });
+  if(!reduce && 'IntersectionObserver' in window){
+    // A card already wholly on screen is revealed too, even in the bottom strip the first observer leaves out
+    // (a tall viewport, such as a tablet or a full-page capture, can show a whole section without scrolling).
+    var io2;
+    function shown(el){ el.classList.add('in'); io.unobserve(el); io2.unobserve(el); }
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ shown(e.target); } }); }, {threshold: .12, rootMargin: '0px 0px -6% 0px'});
+    io2 = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.intersectionRatio >= .99){ shown(e.target); } }); }, {threshold: 1});
+    rvEls.forEach(function(el){ var r = el.getBoundingClientRect(); if(r.top < window.innerHeight * .9 || (r.top >= 0 && r.bottom <= window.innerHeight)){ el.classList.add('in'); } else { io.observe(el); io2.observe(el); } });
+  } else { rvEls.forEach(function(el){ el.classList.add('in'); }); }
+
+  // Hero telemetry: live readings. Rewards and heat move together (78.4 sats per hour of MAX at
+  // 900 EH/s, 792 W of heat), and pounds use the calculator's Bitcoin price and tariff below.
+  var hash = document.getElementById('t-hash'), watt = document.getElementById('t-watt'),
+      temp = document.getElementById('t-temp'), room = document.getElementById('t-room'),
+      sats = document.getElementById('t-sats'), kwhEl = document.getElementById('t-kwh'),
+      gbpEl = document.getElementById('t-gbp'), payEl = document.getElementById('t-pay'), monthEl = document.getElementById('t-month');
+  var base = {h:37.9, w:792, t:61.4, r:21.5, s:1412, ms:12016};
+  var SATS_PER_KWH = 78.4 / 0.792;
+  // A calculator input as a number: empty or unreadable falls back to the field's default, and the value is held to
+  // the field's own min and max, so the hero and the calculator always work from the same figures.
+  function inVal(id, d){
+    var el = document.getElementById(id); if(!el) return d;
+    var v = parseFloat(el.value); if(!isFinite(v)) v = parseFloat(el.defaultValue); if(!isFinite(v)) v = d;
+    var mn = parseFloat(el.min), mx = parseFloat(el.max);
+    if(isFinite(mn) && v < mn) v = mn; if(isFinite(mx) && v > mx) v = mx;
+    return v;
+  }
+  function num(id, d){ return inVal(id, d); }
+  function money(){
+    var btc = num('btc', 70000), tariff = num('tariff', 0.25), kwh = base.s / SATS_PER_KWH;
+    var gbp = base.s * btc / 1e8, cost = kwh * tariff;
+    kwhEl.textContent = kwh.toFixed(1);
+    gbpEl.textContent = gbp.toFixed(2);
+    payEl.textContent = cost > 0 ? Math.round(gbp / cost * 100) : (gbp > 0 ? '100+' : 0);
+    monthEl.textContent = ((base.ms + base.s) * btc / 1e8).toFixed(2);
+    sats.textContent = Math.round(base.s).toLocaleString('en-GB');
+  }
+  money();
+  ['btc','tariff'].forEach(function(id){ var el = document.getElementById(id); if(el) el.addEventListener('input', money); });
+  var pts = [];
+  for(var i=0;i<48;i++){ pts.push(36 + Math.sin(i/5)*1.2 + (Math.random()-.5)*1.6); }
+  function drawSpark(){
+    var W=400,H=64, min=33, max=40;
+    var d='', f='M0 '+H;
+    for(var i=0;i<pts.length;i++){
+      var x = i*(W/(pts.length-1)), y = H - ((pts[i]-min)/(max-min))*(H-8) - 4;
+      d += (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' ';
+      f += 'L'+x.toFixed(1)+' '+y.toFixed(1)+' ';
+    }
+    f += 'L'+W+' '+H+'Z';
+    document.getElementById('spark-line').setAttribute('d', d);
+    document.getElementById('spark-fill').setAttribute('d', f);
+  }
+  drawSpark();
+  if(!reduce){
+    setInterval(function(){
+      var h = base.h + (Math.random()-.5)*0.8;
+      hash.textContent = h.toFixed(1);
+      watt.textContent = Math.round(base.w + (Math.random()-.5)*10);
+      temp.textContent = (base.t + (Math.random()-.5)*0.4).toFixed(1);
+      room.textContent = (base.r + (Math.random()-.5)*0.1).toFixed(1);
+      base.s += Math.random() < .5 ? 1 : 0;
+      money();
+      pts.push(h); pts.shift(); drawSpark();
+    }, 1800);
+  }
+
+
+  // Phone layout helpers: table cells carry their column name, the app section gets a phone switcher.
+  Array.prototype.forEach.call(document.querySelectorAll('table.tbl'), function(t){
+    var heads = Array.prototype.map.call(t.querySelectorAll('thead th'), function(th){ return th.textContent.trim(); });
+    Array.prototype.forEach.call(t.querySelectorAll('tbody tr'), function(tr){
+      Array.prototype.forEach.call(tr.children, function(td, i){ if (heads[i]) td.setAttribute('data-label', heads[i]); });
+    });
+  });
+  (function(){
+    var phones = document.querySelector('.phones'); if (!phones) return;
+    var slots = Array.prototype.slice.call(phones.children);
+    var bar = document.createElement('div'); bar.className = 'phone-tabs'; bar.setAttribute('role', 'tablist'); bar.setAttribute('aria-label', 'Choose an app screen');
+    slots.forEach(function(slot, i){
+      var cap = slot.querySelector('.caption'), b = document.createElement('button');
+      b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = cap ? cap.textContent : 'Screen ' + (i + 1);
+      b.addEventListener('click', function(){ pick(i); });
+      bar.appendChild(b);
+    });
+    function pick(i){
+      slots.forEach(function(slot, j){ slot.classList.toggle('on', j === i); });
+      Array.prototype.forEach.call(bar.children, function(b, j){ b.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
+    }
+    phones.parentNode.insertBefore(bar, phones); pick(0);
+  })();
+
+  // Economics calculator.
+  var HR = {400:19, 600:28, 800:38};
+  var $ = function(id){ return document.getElementById(id); };
+  var gbp = function(n){ return '£' + n.toLocaleString('en-GB',{minimumFractionDigits:2, maximumFractionDigits:2}); };
+  function calc(){
+    var w = parseFloat($('mode').value), th = HR[w];
+    var hours = inVal('hours', 8), tariff = inVal('tariff', 0.25),
+        btc = inVal('btc', 70000), net = inVal('net', 900), fee = inVal('fee', 1)/100;
+    $('hours-o').textContent = hours;
+    var kwh = w/1000*hours, cost = kwh*tariff;
+    var share = th / (net*1e6);                      // TH/s over EH/s×1e6
+    var btcDay = share * 144 * 3.125 * (hours/24) * (1-fee);
+    var rev = btcDay*btc, satsDay = Math.round(btcDay*1e8), netCost = cost - rev;
+    $('r-cost').textContent = gbp(cost);
+    $('r-rev').textContent = gbp(rev);
+    $('r-sats').textContent = satsDay.toLocaleString('en-GB') + ' sats';
+    $('r-net').textContent = (netCost < 0 ? '–' : '') + gbp(Math.abs(netCost));
+    // On a phone the chart stacks each label above its bar and uses a narrower drawing, so the text stays readable.
+    var svg = $('bars'), narrow = svg.getBoundingClientRect().width < 460, x0 = narrow ? 0 : 170;
+    svg.setAttribute('viewBox', narrow ? '0 0 300 170' : '0 0 520 150');
+    svg.style.height = narrow ? 'auto' : '';
+    var maxW = narrow ? 228 : 300, scale = cost>0 ? maxW/cost : 0;
+    var w1 = Math.max(2, cost*scale), w2 = Math.max(2, Math.max(0,netCost)*scale);
+    var t = svg.querySelectorAll('g > text'), ln = svg.querySelector('line');
+    svg.querySelector('g').setAttribute('font-size', narrow ? '13' : '11');
+    t[0].setAttribute('y', narrow ? '16' : '36'); t[2].setAttribute('y', narrow ? '78' : '86');
+    $('b1').setAttribute('x', x0); $('b1').setAttribute('y', narrow ? '24' : '22');
+    $('b2').setAttribute('x', x0); $('b2').setAttribute('y', narrow ? '86' : '72');
+    $('l1').setAttribute('y', narrow ? '39' : '36'); $('l2').setAttribute('y', narrow ? '101' : '86');
+    ln.setAttribute('x1', x0); ln.setAttribute('x2', x0); ln.style.display = narrow ? 'none' : '';
+    $('sav').setAttribute('x', x0); $('sav').setAttribute('y', narrow ? '140' : '132');
+    $('b1').setAttribute('width', w1.toFixed(1)); $('l1').setAttribute('x', (x0+6+w1).toFixed(1)); $('l1').textContent = gbp(cost);
+    $('b2').setAttribute('width', w2.toFixed(1)); $('l2').setAttribute('x', (x0+6+w2).toFixed(1)); $('l2').textContent = (netCost<0?'–':'')+gbp(Math.abs(netCost));
+    var pct = cost>0 ? Math.round(rev/cost*100) : (rev>0 ? 100 : 0);
+    $('sav').textContent = pct >= 100 ? 'Rewards exceed electricity cost at these assumptions' : 'Heating cost offset: ' + pct + ' %';
+  }
+  /* The same limits as the app's Settings. A value outside them, or a blank or unreadable one, is never used
+     silently: the field says which number the sum is using, and when you leave the field it is set to it. */
+  var LIM = {tariff:['Electricity price','£',' per kWh'], btc:['Bitcoin price','£',''], net:['Network hashrate','',' EH/s'], fee:['Pool fee','',' %']};
+  function fmtLim(id, v){ var L = LIM[id]; return L[1] + (id==='btc'||id==='net' ? Math.round(v).toLocaleString('en-GB') : String(+v.toFixed(4))) + L[2]; }
+  function hintFor(id){
+    var el = $(id), raw = String(el.value).trim(), v = parseFloat(raw), mn = parseFloat(el.min), mx = parseFloat(el.max), used = inVal(id, 0);
+    if(raw === '' || !isFinite(v)) return {used:used, why:'the default', msg:(raw === '' ? 'Empty' : 'Not a number') + ', so the sum uses ' + fmtLim(id, used) + '.'};
+    if(isFinite(mn) && v < mn) return {used:used, why:'the lowest the calculator takes', msg:LIM[id][0] + ' starts at ' + fmtLim(id, mn) + ' here, so the sum uses that.'};
+    if(isFinite(mx) && v > mx) return {used:used, why:'the highest the calculator takes', msg:LIM[id][0] + ' tops out at ' + fmtLim(id, mx) + ' here, so the sum uses that.'};
+    return null;
+  }
+  function noteEl(id){ var el = $(id), n = $(id + '-h'); if(!n){ n = document.createElement('small'); n.className = 'fhint'; n.id = id + '-h'; n.setAttribute('aria-live', 'polite'); el.insertAdjacentElement('afterend', n); el.setAttribute('aria-describedby', n.id); } return n; }
+  Object.keys(LIM).forEach(function(id){
+    $(id).addEventListener('input', function(){ var h = hintFor(id); noteEl(id).textContent = h ? h.msg : ''; });
+    $(id).addEventListener('change', function(){
+      var h = hintFor(id), el = $(id); if(!h) { noteEl(id).textContent = ''; return; }
+      el.value = String(+h.used.toFixed(4)); noteEl(id).textContent = 'Set to ' + fmtLim(id, h.used) + ', ' + h.why + '.';
+      calc();
+    });
+  });
+  ['mode','hours','tariff','btc','net','fee'].forEach(function(id){ $(id).addEventListener('input', calc); });
+  calc();
+  window.addEventListener('resize', function(){ clearTimeout(calc.t); calc.t = setTimeout(calc, 120); });
+
+
+  // Plans gallery lightbox.
+  var lb = $('lb'), lbImg = $('lb-img'), lbCap = $('lb-cap');
+  document.querySelectorAll('#gal figure').forEach(function(f){
+    f.setAttribute('tabindex','0');
+    function open(){
+      if(lb.classList.contains('on')) return;
+      var im=f.querySelector('img'), fc=f.querySelector('figcaption'), sub=fc.querySelector('span');
+      // The caption is the title and its sub-label, kept apart so they do not run together.
+      var title=Array.prototype.filter.call(fc.childNodes, function(n){ return n.nodeType===3; }).map(function(n){ return n.textContent; }).join('').trim();
+      lbImg.src=im.src; lbImg.alt=im.alt; lbCap.textContent = sub ? title+' · '+sub.textContent.trim() : title;
+      // A modal dialog: the page behind stops scrolling and takes no focus, and Close takes focus.
+      lbOpener=f; lbY=window.scrollY||0;
+      lb.classList.add('on');
+      document.documentElement.classList.add('am-lock');
+      setInert(lb, true, lbInert);
+      $('lb-x').focus({preventScroll:true});
+    }
+    f.addEventListener('click', open);
+    f.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
+  });
+  var lbOpener=null, lbY=0, lbInert=[];
+  // Make everything outside `el` inert (the siblings of el and of each of its ancestors up to body), or undo it.
+  function setInert(el, on, list){
+    if(on){
+      list.length=0;
+      for(var x=el; x && x!==document.body; x=x.parentNode){
+        Array.prototype.forEach.call(x.parentNode.children, function(c){
+          if(c!==x && !c.inert && c.tagName!=='SCRIPT'){ c.inert=true; list.push(c); }
+        });
+      }
+    } else {
+      list.forEach(function(c){ c.inert=false; });
+      list.length=0;
+    }
+  }
+  function close(){
+    if(!lb.classList.contains('on')) return;
+    lb.classList.remove('on'); lbImg.removeAttribute('src');
+    setInert(lb, false, lbInert);
+    document.documentElement.classList.remove('am-lock');
+    if(Math.abs((window.scrollY||0)-lbY)>1){ var rs=document.documentElement.style; rs.scrollBehavior='auto'; window.scrollTo(0,lbY); rs.scrollBehavior=''; }
+    if(lbOpener && lbOpener.focus) lbOpener.focus({preventScroll:true});
+    lbOpener=null;
+  }
+  $('lb-x').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+  // The lightbox wheel never scrolls the page behind it.
+  lb.addEventListener('wheel', function(e){ e.preventDefault(); }, {passive:false});
+  lb.addEventListener('touchmove', function(e){ e.preventDefault(); }, {passive:false});
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') close();
+    // Tab stays on Close while the lightbox is open.
+    else if(e.key==='Tab' && lb.classList.contains('on')){ e.preventDefault(); $('lb-x').focus({preventScroll:true}); }
+  });
+
+  // Try the app: one large live phone in a modal. 390 x 844 is scaled to fit the viewport height.
+  var am = $('app-modal'), amFit = $('am-fit'), amPhone = $('am-phone'), amFrame = $('am-frame'), amOpener = null;
+  var AM_SRC = 'app/index.html?demo=1&tab=home';
+  // Full bleed (the app fills the device screen) on a phone, in portrait or landscape. Same test as the CSS.
+  var AM_BLEED = window.matchMedia ? window.matchMedia('(max-width:479.98px), (max-height:499.98px) and (pointer:coarse)') : {matches:false};
+  // Full bleed hides the app's own status bar (the device draws a real one); the framed phone shows it.
+  // A rotation can switch modes while the modal is open, so the app is told without a reload.
+  function amSb(){
+    try{ amFrame.contentWindow.postMessage({satostat:'sb', show:!AM_BLEED.matches}, '*'); }catch(e){}
+  }
+  amFrame.addEventListener('load', function(){ if(am.classList.contains('on')) amSb(); });
+  function amSize(){
+    if(!am.classList.contains('on')) return;
+    amSb();
+    if(AM_BLEED.matches){ amPhone.style.transform=''; return; }
+    var w = amPhone.offsetWidth, h = amPhone.offsetHeight;
+    var availH = window.innerHeight - $('app-modal').querySelector('.am-bar').offsetHeight - 16;
+    var availW = window.innerWidth - 32;
+    var k = Math.min(1, availH / h, availW / w);
+    amPhone.style.transform = 'scale(' + k.toFixed(4) + ')';
+    amFit.style.width = (w * k).toFixed(1) + 'px';
+    amFit.style.height = (h * k).toFixed(1) + 'px';
+  }
+  // Keep focus inside the modal: everything else on the page is made inert while it is open
+  // (the siblings of the modal and of each of its ancestors up to body), and two edge stops wrap Tab.
+  var amInert = [];
+  function amSetInert(on){
+    if(on){
+      amInert = [];
+      for(var el = am; el && el !== document.body; el = el.parentNode){
+        Array.prototype.forEach.call(el.parentNode.children, function(c){
+          if(c!==el && !c.inert && c.tagName!=='SCRIPT'){ c.inert = true; amInert.push(c); }
+        });
+      }
+    } else {
+      amInert.forEach(function(el){ el.inert = false; });
+      amInert = [];
+    }
+  }
+  var amY = 0;
+  // tab and room: set when an embedded phone's "More below" pill asks for the full-size app on its own tab.
+  // From the Try the app button the first argument is the click event, and the app opens on Home.
+  function amOpen(tab, room){
+    if(am.classList.contains('on')) return;
+    var t = typeof tab === 'string' && /^(home|heat|rooms|wallet|settings)$/.test(tab) ? tab : 'home';
+    var rm = t === 'heat' && typeof room === 'string' && /^[\w-]{1,40}$/.test(room) ? '&room=' + room : '';
+    // Safari and iOS do not focus a button when it is clicked, so focus goes back to Try the app instead of the page.
+    var ae = document.activeElement;
+    amOpener = ae && ae !== document.body && ae !== document.documentElement ? ae : $('try-app');
+    amY = window.scrollY || 0;
+    am.hidden = false; am.classList.add('on');
+    document.documentElement.classList.add('am-lock');
+    amSetInert(true);
+    // On a phone the app fills the device screen, so its own status bar is hidden (the phone shows a real one).
+    var base = t === 'home' ? AM_SRC : AM_SRC.replace('tab=home', 'tab=' + t) + rm;
+    var src = AM_BLEED.matches ? base + '&sb=0' : base;
+    if(amFrame.getAttribute('src') !== src) amFrame.setAttribute('src', src);
+    amSize();
+    $('am-x').focus({preventScroll:true});
+  }
+  function amClose(){
+    if(!am.classList.contains('on')) return;
+    am.classList.remove('on'); am.hidden = true;
+    amSetInert(false);
+    document.documentElement.classList.remove('am-lock');
+    // The page behind the dialog comes back where it was, even if something scrolled it while the dialog was open.
+    if(Math.abs((window.scrollY || 0) - amY) > 1){
+      var rs = document.documentElement.style; rs.scrollBehavior = 'auto'; window.scrollTo(0, amY); rs.scrollBehavior = '';
+    }
+    amFrame.setAttribute('src', 'about:blank');
+    if(amOpener && amOpener.focus) amOpener.focus({preventScroll:true});
+  }
+  $('try-app').addEventListener('click', function(){ amOpen(); });
+  $('am-x').addEventListener('click', amClose);
+  $('am-edge-start').addEventListener('focus', function(){ amFrame.focus(); });
+  $('am-edge-end').addEventListener('focus', function(){ $('am-full').focus(); });
+  am.addEventListener('click', function(e){ if(e.target===am) amClose(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') amClose(); });
+  // Escape pressed while focus is inside the app: the app tells its parent page.
+  // An embedded phone's "More below" pill: the modal opens on that phone's tab, where the screen scrolls.
+  var phoneFrames = Array.prototype.slice.call(document.querySelectorAll('#app .phones iframe'));
+  window.addEventListener('message', function(e){
+    if(e.source===amFrame.contentWindow && e.data && e.data.satostat==='escape') amClose();
+    else if(e.data && e.data.satostat==='open' && phoneFrames.some(function(f){ return f.contentWindow===e.source; })) amOpen(e.data.tab, e.data.room);
+  });
+  window.addEventListener('resize', amSize);
+  window.addEventListener('orientationchange', amSize);
+
+  // Waitlist: stored locally only.
+  $('wl').addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = $('wl-email').value.trim(), ok = $('wl-ok');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ ok.style.color='var(--crit)'; ok.textContent='Enter a valid email address.'; return; }
+    try{
+      var list = JSON.parse(localStorage.getItem('satostat-waitlist')||'[]'), entry = {email:email, type:$('wl-type').value, at:new Date().toISOString()};
+      if(!Array.isArray(list)) list = [];
+      // One entry per address: a repeat submit updates it rather than adding a duplicate.
+      var at = -1; list.forEach(function(x, i){ if(x && typeof x.email === 'string' && x.email.toLowerCase() === email.toLowerCase()) at = i; });
+      if(at >= 0) list[at] = entry; else list.push(entry);
+      localStorage.setItem('satostat-waitlist', JSON.stringify(list));
+    }catch(err){}
+    ok.style.color='var(--good)'; ok.textContent='Saved on this device: ' + email + '. We will connect the waitlist service before pilot.';
+    $('wl-email').value='';
+  });
+})();
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+// QuantumRad V1, modelled from the 2022 plan set (units: 1 = 100 mm).
+// Front: 890 x 420 x 30 fluted panel, 17 flutes. Body: 880 x 320 x 32.
+// Rear: two dovetail wall rails, 40 deep. Inside: fin stack, 6 hashboards, 2 x 6 fans.
+// three.js is fetched with a dynamic import, so the page's DOMContentLoaded and load never wait on the CDN;
+// the model fades in when it arrives, and the hero simply goes without it if the CDN cannot be reached.
+let THREE, RoundedBoxGeometry, RoomEnvironment;
+const host = document.getElementById('hero-3d');
+if (host) {
+  Promise.all([import('three'), import('three/addons/geometries/RoundedBoxGeometry.js'), import('three/addons/environments/RoomEnvironment.js')])
+    .then(([T, R, E]) => { THREE = T; RoundedBoxGeometry = R.RoundedBoxGeometry; RoomEnvironment = E.RoomEnvironment; init(host); })
+    .catch(e => { host.classList.add('x3-off'); console.warn('hero-3d', e); });
+}
+
+function init(host) {
+  const canvas = host.querySelector('canvas');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.1;
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 200);
+
+  // ---------- materials ----------
+  const M = {
+    carbon: new THREE.MeshPhysicalMaterial({ color: 0x1c1f26, metalness: 0.5, roughness: 0.42, clearcoat: 0.45, clearcoatRoughness: 0.35, envMapIntensity: 0.9 }),
+    carbonBack: new THREE.MeshStandardMaterial({ color: 0x15171c, metalness: 0.4, roughness: 0.6, envMapIntensity: 0.6 }),
+    steel: new THREE.MeshStandardMaterial({ color: 0x2b2d33, metalness: 0.75, roughness: 0.42, envMapIntensity: 0.8 }),
+    rail: new THREE.MeshStandardMaterial({ color: 0x45474e, metalness: 0.7, roughness: 0.5, envMapIntensity: 0.7 }),
+    alu: new THREE.MeshStandardMaterial({ color: 0xb8bcc4, metalness: 0.95, roughness: 0.28, envMapIntensity: 1.0 }),
+    pcb: new THREE.MeshStandardMaterial({ color: 0xc9a84c, metalness: 0.85, roughness: 0.3, emissive: 0x2a1600, envMapIntensity: 1.1 }),
+    chip: new THREE.MeshStandardMaterial({ color: 0x0f0f12, metalness: 0.3, roughness: 0.5, emissive: 0xff5a1f, emissiveIntensity: 0.5 }),
+    fanRing: new THREE.MeshStandardMaterial({ color: 0xc9a84c, metalness: 0.9, roughness: 0.3 }),
+    fanBlade: new THREE.MeshStandardMaterial({ color: 0x232429, metalness: 0.4, roughness: 0.55, side: THREE.DoubleSide }),
+    mesh: new THREE.MeshStandardMaterial({ color: 0x1a1b1f, metalness: 0.6, roughness: 0.6 }),
+    vent: new THREE.MeshBasicMaterial({ color: 0xff7a2e, toneMapped: false }),
+    gold: new THREE.MeshStandardMaterial({ color: 0xe8cc6c, metalness: 1, roughness: 0.25, emissive: 0x3a2a00 }),
+  };
+
+  const unit = new THREE.Group();          // whole radiator
+  const tilt = new THREE.Group();          // pointer + scroll rotation
+  tilt.add(unit); scene.add(tilt);
+
+  // ---------- A: fluted front panel (z 0.21..0.51) ----------
+  const gPlate = new THREE.Group(); unit.add(gPlate);
+  const W = 8.9, H = 4.2, FL = 17, fw = W / FL;
+  const finGeo = new RoundedBoxGeometry(fw - 0.04, H, 0.26, 4, 0.08);
+  for (let i = 0; i < FL; i++) {
+    const m = new THREE.Mesh(finGeo, M.carbon);
+    m.position.set(-W / 2 + fw * (i + 0.5), 0, 0.38);
+    gPlate.add(m);
+  }
+  const backing = new THREE.Mesh(new RoundedBoxGeometry(W, H - 0.02, 0.1, 2, 0.03), M.carbonBack);
+  backing.position.z = 0.26; gPlate.add(backing);
+
+  // ---------- E: body tray + rear rails ----------
+  const gTray = new THREE.Group(); unit.add(gTray);
+  const BW = 8.8, BH = 3.2;
+  const back = new THREE.Mesh(new THREE.BoxGeometry(BW, BH, 0.04), M.steel); back.position.z = -0.09; gTray.add(back);
+  const topL = new THREE.Mesh(new THREE.BoxGeometry(BW, 0.04, 0.32), M.steel); topL.position.set(0, BH / 2, 0.05); gTray.add(topL);
+  const bot = new THREE.Mesh(new THREE.BoxGeometry(BW, 0.04, 0.32), M.mesh); bot.position.set(0, -BH / 2, 0.05); gTray.add(bot);
+  for (const s of [-1, 1]) { const sd = new THREE.Mesh(new THREE.BoxGeometry(0.04, BH, 0.32), M.steel); sd.position.set(s * BW / 2, 0, 0.05); gTray.add(sd); }
+  // louvred top exit vent (glows with heat)
+  const vent = new THREE.Mesh(new THREE.BoxGeometry(8.6, 0.02, 0.2), M.vent); vent.position.set(0, BH / 2 + 0.025, 0.05); gTray.add(vent);
+  for (let i = 0; i < 4; i++) { const l = new THREE.Mesh(new THREE.BoxGeometry(8.6, 0.03, 0.012), M.steel); l.position.set(0, BH / 2 + 0.04, -0.03 + i * 0.055); gTray.add(l); }
+
+  const gRails = new THREE.Group(); unit.add(gRails);
+  const sh = new THREE.Shape();             // dovetail section: u = depth (z), v = height (y)
+  sh.moveTo(0, -0.17); sh.lineTo(0.18, -0.17); sh.lineTo(0.4, -0.32); sh.lineTo(0.4, 0.32); sh.lineTo(0.18, 0.17); sh.lineTo(0, 0.17); sh.closePath();
+  const railGeo = new THREE.ExtrudeGeometry(sh, { depth: 8.6, bevelEnabled: false });
+  railGeo.rotateY(-Math.PI / 2); railGeo.translate(4.3, 0, -0.51);
+  for (const y of [0.8, -0.8]) { const r = new THREE.Mesh(railGeo, M.rail); r.position.y = y; gRails.add(r); }
+
+  // ---------- D: two rows of six 120 mm fans ----------
+  const gFans = new THREE.Group(); unit.add(gFans);
+  const fans = [];
+  const ringGeo = new THREE.TorusGeometry(0.56, 0.035, 10, 48);
+  const hubGeo = new THREE.CylinderGeometry(0.14, 0.14, 0.05, 24).rotateX(Math.PI / 2);
+  const bladeGeo = new THREE.BoxGeometry(0.4, 0.14, 0.01).translate(0.27, 0, 0);
+  for (let r = 0; r < 2; r++) for (let c = 0; c < 6; c++) {
+    const f = new THREE.Group(); f.position.set(-3.65 + c * 1.46, r ? -0.78 : 0.78, -0.03);
+    f.add(new THREE.Mesh(ringGeo, M.fanRing));
+    const rot = new THREE.Group();
+    rot.add(new THREE.Mesh(hubGeo, M.fanBlade));
+    for (let b = 0; b < 7; b++) { const bl = new THREE.Mesh(bladeGeo, M.fanBlade); bl.rotation.z = b / 7 * Math.PI * 2; bl.rotation.x = 0.35; rot.add(bl); }
+    f.add(rot); fans.push(rot); gFans.add(f);
+  }
+
+  // ---------- C: six hashboards, 3 columns x 2 rows ----------
+  const gBoards = new THREE.Group(); unit.add(gBoards);
+  const boardGeo = new RoundedBoxGeometry(2.7, 1.38, 0.05, 2, 0.02);
+  const chipGeo = new THREE.BoxGeometry(0.24, 0.24, 0.05);
+  const chips = new THREE.InstancedMesh(chipGeo, M.chip, 6 * 18);
+  let ci = 0; const tmp = new THREE.Object3D();
+  for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) {
+    const bx = -2.92 + c * 2.92, by = r ? -0.76 : 0.76;
+    const b = new THREE.Mesh(boardGeo, M.pcb); b.position.set(bx, by, 0.06); gBoards.add(b);
+    for (let i = 0; i < 6; i++) for (let j = 0; j < 3; j++) {
+      tmp.position.set(bx - 1.05 + i * 0.42, by - 0.4 + j * 0.4, 0.1); tmp.updateMatrix(); chips.setMatrixAt(ci++, tmp.matrix);
+    }
+  }
+  gBoards.add(chips);
+
+  // ---------- B: aluminium fin stack ----------
+  const gFin = new THREE.Group(); unit.add(gFin);
+  const finCount = 64;
+  const finPlate = new THREE.InstancedMesh(new THREE.BoxGeometry(0.018, 2.9, 0.09), M.alu, finCount);
+  for (let i = 0; i < finCount; i++) { tmp.position.set(-4.25 + i * (8.5 / (finCount - 1)), 0, 0.165); tmp.updateMatrix(); finPlate.setMatrixAt(i, tmp.matrix); }
+  gFin.add(finPlate);
+  const finBar = new THREE.Mesh(new THREE.BoxGeometry(8.6, 0.05, 0.1), M.alu);
+  for (const y of [1.47, -1.47]) { const b = finBar.clone(); b.position.set(0, y, 0.165); gFin.add(b); }
+
+  // ---------- heat: light, glow, rising particles ----------
+  const heatLight = new THREE.PointLight(0xff8a3d, 6, 9, 1.6); heatLight.position.set(0, 2.2, 0.2); unit.add(heatLight);
+  const key = new THREE.DirectionalLight(0xfff1dc, 2.4); key.position.set(-6, 7, 9); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xe8b84c, 3.2); rim.position.set(8, 3, -6); scene.add(rim);
+  scene.add(new THREE.AmbientLight(0x404048, 0.6));
+
+
+  const PN = 220;
+  const pPos = new Float32Array(PN * 3), pA = new Float32Array(PN), pS = new Float32Array(PN), pLife = new Float32Array(PN), pSpeed = new Float32Array(PN), pX = new Float32Array(PN);
+  const seed = i => { pX[i] = (Math.sin(i * 12.9898) * 43758.5453 % 1 + 1) % 1; };
+  for (let i = 0; i < PN; i++) { seed(i); pLife[i] = (i / PN); pSpeed[i] = 0.35 + ((i * 0.618) % 1) * 0.45; pS[i] = 22 + ((i * 0.381) % 1) * 46; }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  pGeo.setAttribute('aAlpha', new THREE.BufferAttribute(pA, 1));
+  pGeo.setAttribute('aSize', new THREE.BufferAttribute(pS, 1));
+  const pMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    uniforms: { uScale: { value: 1 } },
+    vertexShader: 'attribute float aAlpha;attribute float aSize;varying float vA;uniform float uScale;void main(){vA=aAlpha;vec4 mv=modelViewMatrix*vec4(position,1.0);gl_PointSize=aSize*uScale/-mv.z;gl_Position=projectionMatrix*mv;}',
+    fragmentShader: 'varying float vA;void main(){vec2 c=gl_PointCoord-0.5;float d=length(c);float a=smoothstep(0.5,0.0,d)*vA;vec3 col=mix(vec3(1.0,0.42,0.12),vec3(0.98,0.82,0.45),vA);gl_FragColor=vec4(col*a,a);}'
+  });
+  const particles = new THREE.Points(pGeo, pMat); particles.frustumCulled = false; gTray.add(particles);
+
+  // ---------- labels (match the exploded view letters on the site) ----------
+  const labelBox = host.querySelector('.x3-labels');
+  const LAB = [
+    ['A', 'Pressed steel front', gPlate, new THREE.Vector3(-3.4, 2.45, 0.38)],
+    ['B', 'Aluminium fin stack', gFin, new THREE.Vector3(-1.7, 1.85, 0.16)],
+    ['C', 'Six hashboards', gBoards, new THREE.Vector3(0, 1.75, 0.06)],
+    ['D', 'Two rows of six fans', gFans, new THREE.Vector3(1.9, 1.65, -0.03)],
+    ['E', 'Rear bracket and rails', gRails, new THREE.Vector3(3.6, 1.3, -0.3)],
+  ].map(([k, t, g, v], i) => {
+    const el = document.createElement('button'); el.type = 'button'; el.className = 'x3-label'; el.textContent = k;
+    el.setAttribute('aria-label', k + ', ' + t + ': show details'); el.tabIndex = -1;
+    el.addEventListener('pointerup', ev => ev.stopPropagation());
+    el.addEventListener('click', ev => { ev.stopPropagation(); openCard(active === i ? -1 : i); });
+    labelBox.appendChild(el); return { el, g, v, k, t };
+  });
+
+  // Info cards, worded from the Thermal section and the spec tables on this page.
+  const INFO = [
+    ['Galvanised sheet pressed as one piece and powder coated. The top slot is the only exit vent, so convection carries the air column upward.',
+      [['Panel', '890 × 420 mm'], ['Steel', '1.2 mm, galvanised'], ['Finish', 'Carbon, bone, gold']]],
+    ['Extruded fins bonded to the hashboard heatsinks spread the load, so the front surface sits in the 48–68 °C band and never spikes.',
+      [['Front surface', '48–68 °C'], ['Thermal fuse', '85 °C'], ['Die throttle', '95 °C']]],
+    ['Three sets of two. The number of active boards is the primary heat control and fan speed is the secondary. Boards hot-swap through the rear service hatch.',
+      [['Hashrate', '6 × 6.4 TH/s'], ['Silicon', '5 nm SHA-256'], ['Efficiency', '≈ 21 J/TH']]],
+    ['Moulded into the rear bracket. Row B pushes across the array and row A pulls up to the vent, so the room warms from the top down.',
+      [['Fans', '12 × 120 mm'], ['Drive', 'Fluid bearing, PWM'], ['Noise, ECO', '< 28 dB(A)']]],
+    ['Wall-mount rail, PSU bay, Ethernet and mains entry. The air-compliant cage holds the boards 25 mm off the shell.',
+      [['Rails', '2 × 890 mm steel'], ['Fixings', '6 × M8 or M6'], ['Power', '230 V, 13 A plug']]],
+  ];
+  const card = document.createElement('div'); card.className = 'x3-card'; card.setAttribute('role', 'dialog'); card.setAttribute('aria-live', 'polite');
+  card.innerHTML = '<button type="button" class="x3c-x" aria-label="Close details">×</button><div class="x3c-k"><b></b><span></span></div><h4></h4><p></p><dl></dl>';
+  host.appendChild(card);
+  card.addEventListener('pointerup', ev => ev.stopPropagation());
+  card.addEventListener('click', ev => ev.stopPropagation());
+  card.querySelector('.x3c-x').addEventListener('click', () => openCard(-1));
+  let active = -1, cardW = 0, cardH = 0;
+  function openCard(i) {
+    active = i;
+    LAB.forEach((l, j) => { l.el.classList.toggle('on', j === i); l.el.classList.toggle('dim', i >= 0 && j !== i); l.el.setAttribute('aria-expanded', j === i ? 'true' : 'false'); });
+    if (i < 0) { card.classList.remove('show'); if (reduce) render(0); return; }
+    const l = LAB[i], [body, specs] = INFO[i];
+    card.querySelector('.x3c-k b').textContent = l.k;
+    card.querySelector('.x3c-k span').textContent = 'Layer ' + (i + 1) + ' of 5';
+    card.querySelector('h4').textContent = l.t;
+    card.querySelector('p').textContent = body;
+    card.querySelector('dl').innerHTML = specs.map(([a, b]) => '<div><dt>' + a + '</dt><dd>' + b + '</dd></div>').join('');
+    card.classList.remove('show'); void card.offsetWidth; card.classList.add('show');
+    const dock = cw < 520;
+    card.classList.toggle('dock', dock);
+    // A transformed ancestor would trap position:fixed, so the phone sheet lives on <body>.
+    if (dock && card.parentNode !== document.body) document.body.appendChild(card);
+    if (!dock && card.parentNode !== host) host.appendChild(card);
+    cardW = card.offsetWidth; cardH = card.offsetHeight;
+    setRun(true); if (reduce) render(0);
+  }
+  document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && active >= 0) openCard(-1); });
+
+
+  // ---------- layout ----------
+  let cw = 1, ch = 1, fitDist = 20;
+  function placeCamera(k) { const d = fitDist * (1 + 0.22 * k); camera.position.set(0, d * 0.1, d); camera.lookAt(0, 0.15 - 0.2 * k, 0); }
+  function resize() {
+    const r = host.getBoundingClientRect(); cw = Math.max(1, r.width); ch = Math.max(1, r.height);
+    renderer.setSize(cw, ch, false);
+    camera.aspect = cw / ch;
+    const v = THREE.MathUtils.degToRad(camera.fov) / 2, hf = Math.atan(Math.tan(v) * camera.aspect);
+    fitDist = Math.max(5.9 / Math.tan(hf), 3.9 / Math.tan(v));
+    placeCamera(0);
+    camera.updateProjectionMatrix();
+    pMat.uniforms.uScale.value = ch * renderer.getPixelRatio() * 0.012;
+    if (!running || reduce) render(0);
+  }
+
+  // ---------- motion ----------
+  const hero = host.closest('section') || document.body;
+  let spin = -0.62, px = 0, py = 0, tpx = 0, tpy = 0, e = 1, te = 0, t0 = performance.now(), last = t0, running = false, raf = 0;
+  if (!reduce) hero.addEventListener('pointermove', ev => {
+    if (ev.pointerType === 'touch') return;
+    const r = hero.getBoundingClientRect(); tpx = (ev.clientX - r.left) / r.width * 2 - 1; tpy = (ev.clientY - r.top) / r.height * 2 - 1;
+  }, { passive: true });
+  hero.addEventListener('pointerleave', () => { tpx = 0; tpy = 0; });
+  let hover = 0;
+  host.addEventListener('pointerenter', ev => { if (ev.pointerType !== 'touch') hover = 1; });
+  host.addEventListener('pointerleave', ev => { if (ev.pointerType !== 'touch') hover = 0; });
+  host.addEventListener('pointerup', ev => { if (ev.pointerType === 'mouse') return; if (active >= 0) { openCard(-1); return; } hover = hover ? 0 : 1; if (reduce) render(0); });
+  host.addEventListener('click', ev => { if (ev.pointerType && ev.pointerType !== 'mouse') return; if (active >= 0) openCard(-1); });
+  const ease = x => x < 0 ? 0 : x > 1 ? 1 : x * x * (3 - 2 * x);
+  function scrollP() { return Math.min(1, Math.max(0, (window.scrollY || 0) / 320)); }
+
+  const v3 = new THREE.Vector3();
+  function render(dt) {
+    const now = performance.now(), t = (now - t0) / 1000;
+    const intro = reduce ? 0 : 1 - ease((t - 0.5) / 2.2);   // arrives exploded, assembles
+    const sp = scrollP();
+    te = Math.max(intro, ease(sp), hover, active >= 0 ? 1 : 0);
+    e += (te - e) * (reduce ? 1 : Math.min(1, dt * 3.2));
+    px += (tpx - px) * Math.min(1, dt * 3); py += (tpy - py) * Math.min(1, dt * 3);
+
+    // Running: the whole unit turns a full circle about every 18 s. Opening it eases into the angled
+    // exploded view (nearest equivalent angle, so it never unwinds), and closing resumes the spin.
+    const k = ease(e);
+    if (!reduce) spin += dt * 0.35 * (1 - k);
+    const TAU = Math.PI * 2, open = -1.14;
+    const openNear = open + TAU * Math.round((spin - open) / TAU);
+    // Opened up, the model holds still so the A to E letters stay put under the cursor.
+    const drift = 1 - k;
+    tilt.rotation.y = spin * (1 - k) + openNear * k + px * 0.2 * drift;
+    tilt.rotation.x = 0.2 + e * 0.1 + py * 0.08 * drift;
+    placeCamera(e);
+    tilt.position.y = reduce ? 0 : Math.sin(t * 0.8) * 0.05 * drift;
+
+    gPlate.position.set(0, e * 0.9, e * 3.4);
+    gFin.position.set(0, e * 0.66, e * 2.5);
+    gBoards.position.set(0, e * 0.42, e * 1.65);
+    gFans.position.set(0, e * 0.2, e * 0.85);
+    gRails.position.set(0, -e * 0.1, -e * 0.5);
+
+    const heat = 0.75 + 0.25 * Math.sin(t * 2.1);
+    M.chip.emissiveIntensity = 0.35 + e * 1.4 * heat;
+    M.pcb.emissiveIntensity = 0.3 + e * 0.8;
+    heatLight.intensity = 4 + heat * 3 + e * 3;
+    M.vent.color.setRGB(1, 0.42 + 0.1 * heat, 0.16);
+    for (const f of fans) f.rotation.z -= dt * (7 + e * 5);
+
+    // particles rise from the top vent
+    for (let i = 0; i < PN; i++) {
+      if (!reduce) pLife[i] += dt * pSpeed[i] * 0.42;
+      if (pLife[i] > 1) { pLife[i] -= 1; pX[i] = (pX[i] + 0.6180339) % 1; }
+      const L = pLife[i];
+      pPos[i * 3] = -4.2 + pX[i] * 8.4 + Math.sin(L * 6 + i) * 0.12;
+      pPos[i * 3 + 1] = 1.66 + L * 2.6;
+      pPos[i * 3 + 2] = 0.05 + Math.sin(i * 1.7) * 0.12 + L * 0.25;
+      pA[i] = Math.sin(Math.PI * Math.min(1, L * 1.15)) * 0.55 * (1 - L * 0.4);
+    }
+    pGeo.attributes.position.needsUpdate = true; pGeo.attributes.aAlpha.needsUpdate = true;
+
+    renderer.render(scene, camera);
+
+    const la = ease((e - 0.35) / 0.4);
+    for (const l of LAB) {
+      v3.copy(l.v).applyMatrix4(l.g.matrixWorld).project(camera);
+      // Grow in place: the scale sits inside the same transform, after the centring, so a hovered letter never slides off the cursor.
+      const want = l.el.classList.contains('on') ? 1.15 : (l.el.matches(':hover') || l.el === document.activeElement ? 1.12 : 1);
+      l.s = (l.s || 1) + (want - (l.s || 1)) * Math.min(1, dt * 14 || 1);
+      l.el.style.transform = 'translate(' + ((v3.x * 0.5 + 0.5) * cw).toFixed(1) + 'px,' + ((-v3.y * 0.5 + 0.5) * ch).toFixed(1) + 'px) translate(-50%,-50%) scale(' + l.s.toFixed(3) + ')';
+      l.el.style.opacity = la.toFixed(3);
+      l.el.style.pointerEvents = la > 0.6 ? 'auto' : 'none';
+      l.el.tabIndex = la > 0.6 ? 0 : -1;
+      l.sx = (v3.x * 0.5 + 0.5) * cw; l.sy = (-v3.y * 0.5 + 0.5) * ch;
+    }
+    if (active >= 0) {
+      const l = LAB[active];
+      let x, y;
+      if (cw < 520) { card.style.transform = ''; }
+      else {
+        // Try a few spots and take the one that covers the fewest letters, never the chosen one.
+        // Any letter the card still covers is hidden while it is open, so nothing shows through.
+        const R = 17, clampX = v => Math.min(Math.max(8, v), cw - cardW - 8), clampY = v => Math.min(Math.max(8, v), ch - cardH - 8);
+        const rowBottom = Math.max.apply(null, LAB.map(m => m.sy)), rowTop = Math.min.apply(null, LAB.map(m => m.sy));
+        const minX = Math.min.apply(null, LAB.map(m => m.sx)), maxX = Math.max.apply(null, LAB.map(m => m.sx));
+        const spots = [
+          [clampX(l.sx - 28), clampY(rowBottom + 24)],
+          [clampX(maxX + 28), clampY(l.sy - 20)],
+          [clampX(minX - 28 - cardW), clampY(l.sy - 20)],
+          [clampX(l.sx - cardW / 2), clampY(rowTop - 24 - cardH)],
+          [cw - cardW - 8, ch - cardH - 8],
+          [8, ch - cardH - 8],
+        ];
+        const covers = (sx, sy, m) => m.sx > sx - R && m.sx < sx + cardW + R && m.sy > sy - R && m.sy < sy + cardH + R;
+        let best = null, bestScore = 1e9;
+        for (const [sx, sy] of spots) {
+          let score = 0;
+          for (const m of LAB) if (covers(sx, sy, m)) score += m === l ? 100 : 1;
+          if (score < bestScore) { bestScore = score; best = [sx, sy]; }
+        }
+        [x, y] = best;
+        card.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+        for (const m of LAB) if (covers(x, y, m)) { m.el.style.opacity = '0'; m.el.style.pointerEvents = 'none'; m.el.tabIndex = -1; }
+      }
+    }
+  }
+  function loop(now) { const dt = Math.min(0.05, (now - last) / 1000); last = now; render(dt); raf = running ? requestAnimationFrame(loop) : 0; }
+  function setRun(on) { running = on && !reduce && !document.hidden; if (running && !raf) { last = performance.now(); raf = requestAnimationFrame(loop); } }
+  new IntersectionObserver(es => setRun(es[0].isIntersecting), { rootMargin: '80px' }).observe(host);
+  document.addEventListener('visibilitychange', () => setRun(!document.hidden && host.getBoundingClientRect().bottom > 0));
+  if (reduce) addEventListener('scroll', () => render(0), { passive: true });
+  new ResizeObserver(resize).observe(host);
+  const hint = host.querySelector('.x3-hint'); const touchy = matchMedia('(hover: none)').matches;
+  hint.dataset.closed = touchy ? 'Tap to look inside' : 'Hover to look inside'; hint.dataset.open = touchy ? 'Tap a letter for details' : 'Click a letter for details'; hint.textContent = hint.dataset.closed;
+  setInterval(() => { const want = e > 0.6 ? hint.dataset.open : hint.dataset.closed; if (hint.textContent !== want) hint.textContent = want; }, 250);
+  resize(); host.classList.add('x3-ready');
+}
+</script>
+</body>
+</html>
